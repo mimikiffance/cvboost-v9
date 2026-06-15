@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CVBoost — Optimise ton CV avec l'IA en 30 secondes</title>
+<meta name="description" content="CVBoost optimise ton CV avec l'IA pour passer les filtres ATS et décrocher plus d'entretiens. Score ATS, mots-clés ciblés, réécriture IA. Essai gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0e0e10;color:#f0f0ee;line-height:1.6;min-height:100vh}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,16,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1e1e1e;padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:22px;letter-spacing:-1px;cursor:pointer;color:#f0f0ee;text-decoration:none}
+.logo span{color:#5B4FE8}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:14px;color:#777;text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#f0f0ee}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-ghost-nav{font-size:14px;color:#888;background:none;border:1px solid #2a2a2a;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:all .2s;text-decoration:none}
+.btn-ghost-nav:hover{border-color:#5B4FE8;color:#f0f0ee}
+.btn-cta-nav{background:#5B4FE8;color:#fff;padding:9px 20px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;text-decoration:none}
+.btn-cta-nav:hover{background:#4a3fd4}
+.user-email-nav{font-size:12px;color:#555;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* HERO */
+.hero{padding:120px 5% 80px;max-width:1200px;margin:0 auto}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-left{}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px}
+.hero-badge-dot{width:6px;height:6px;background:#5B4FE8;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:clamp(36px,4.5vw,58px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px}
+h1 .accent{color:#5B4FE8}
+h1 .dim{color:#333}
+.hero-sub{font-size:17px;color:#777;max-width:480px;line-height:1.75;margin-bottom:36px}
+.hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:32px}
+.btn-hero-primary{background:#5B4FE8;color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-hero-primary:hover{background:#4a3fd4;transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,79,232,.3)}
+.btn-hero-secondary{color:#888;font-size:14px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.btn-hero-secondary:hover{color:#f0f0ee}
+.hero-social{display:flex;align-items:center;gap:12px}
+.hero-avatars{display:flex}
+.hero-avatar{width:32px;height:32px;border-radius:50%;border:2px solid #0e0e10;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.hero-avatar:first-child{margin-left:0}
+.hero-proof{font-size:13px;color:#666}
+.hero-proof strong{color:#aaa}
+
+/* HERO MOCKUP */
+.hero-right{position:relative}
+.mockup-wrap{background:#141416;border:1px solid #2a2a2a;border-radius:20px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.mockup-header{display:flex;align-items:center;gap:6px;margin-bottom:20px}
+.mockup-dot{width:10px;height:10px;border-radius:50%}
+.mockup-score-section{background:#0e0e10;border-radius:14px;padding:20px;margin-bottom:14px}
+.mockup-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.mockup-score-label{font-size:11px;font-weight:700;color:#555;letter-spacing:.5px;text-transform:uppercase}
+.mockup-score-num{font-size:44px;font-weight:900;letter-spacing:-2px;color:#5B4FE8;line-height:1}
+.mockup-score-improve{font-size:14px;font-weight:700;color:#2ecc9a;background:#0f1e14;border:1px solid #1a3d24;padding:4px 10px;border-radius:8px}
+.mockup-bar{height:6px;background:#1e1e1e;border-radius:6px;overflow:hidden;margin-bottom:16px}
+.mockup-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#5B4FE8,#a69af5);animation:barFill 1.5s ease forwards}
+@keyframes barFill{from{width:0}to{width:87%}}
+.mockup-criteria{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mockup-criterion{background:#141416;border-radius:8px;padding:10px}
+.mockup-criterion-name{font-size:10px;color:#666;margin-bottom:4px}
+.mockup-criterion-score{font-size:12px;font-weight:700}
+.mockup-criterion-bar{height:3px;background:#2a2a2a;border-radius:3px;margin-top:4px;overflow:hidden}
+.mockup-criterion-fill{height:100%;border-radius:3px}
+.mockup-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.mockup-kw{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px}
+.mockup-kw.added{background:#0f1e14;color:#2ecc9a;border:1px solid #1a3d24}
+.mockup-kw.missing{background:#1e1010;color:#e74c5b;border:1px solid #3d1a1a}
+
+/* LOGOS */
+.logos-bar{border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:28px 5%;background:#111}
+.logos-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.logos-label{font-size:12px;font-weight:600;color:#444;letter-spacing:1px;text-transform:uppercase;margin-right:16px}
+.logo-company{background:#1a1a1a;color:#555;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;letter-spacing:.3px}
+
+/* SECTIONS */
+.section{padding:100px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5B4FE8;margin-bottom:14px}
+h2.section-title{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px}
+.section-sub{font-size:16px;color:#666;max-width:540px;line-height:1.75}
+
+/* HOW IT WORKS */
+.how-bg{background:#0a0a0c}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+.step-card{position:relative}
+.step-num{width:40px;height:40px;background:#5B4FE8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;margin-bottom:20px}
+.step-card h3{font-size:18px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+.step-card p{font-size:14px;color:#666;line-height:1.75}
+.step-connector{position:absolute;top:20px;right:-24px;color:#2a2a2a;font-size:24px;font-weight:300}
+.step-visual{background:#141416;border:1px solid #1e1e1e;border-radius:14px;padding:16px;margin-top:20px}
+.step-visual-line{height:8px;border-radius:4px;margin-bottom:8px;background:#1e1e1e}
+.step-visual-line.active{background:linear-gradient(90deg,#5B4FE8,#a69af5)}
+.step-visual-line.partial{background:linear-gradient(90deg,#5B4FE8 60%,#1e1e1e 60%)}
+
+/* FEATURES */
+.features-bg{background:#111}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px;border-radius:20px;overflow:hidden;border:1px solid #1e1e1e}
+.feature-card{background:#141416;padding:40px;transition:background .2s}
+.feature-card:hover{background:#1a1a1a}
+.feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.feature-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:10px}
+.feature-card p{font-size:14px;color:#666;line-height:1.75}
+.feature-tag{display:inline-block;background:#5B4FE8;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:14px;letter-spacing:.5px;text-transform:uppercase}
+
+/* STATS */
+.stats-section{background:#0a0a0c;padding:80px 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1200px;margin:0 auto}
+.stat-item{text-align:center}
+.stat-number{font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#f0f0ee;line-height:1;margin-bottom:6px}
+.stat-number span{color:#5B4FE8}
+.stat-desc{font-size:13px;color:#555;font-weight:500}
+
+/* EXEMPLES PREVIEW */
+.examples-preview{max-width:1200px;margin:0 auto;padding:0}
+.ex-filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.ex-filter{padding:8px 20px;border-radius:20px;border:1px solid #2a2a2a;background:transparent;color:#777;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.ex-filter:hover{border-color:#5B4FE8;color:#f0f0ee}
+.ex-filter.active{background:#5B4FE8;border-color:#5B4FE8;color:#fff}
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.ex-card{background:#141416;border:1px solid #222;border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s}
+.ex-card:hover{transform:translateY(-3px);border-color:#5B4FE8}
+.ex-card-preview{background:#1a1a1c;padding:14px;height:120px;overflow:hidden;position:relative;border-bottom:1px solid #222}
+.ex-card-preview::after{content:"";position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,#1a1a1c)}
+.ex-card-preview-text{font-size:6px;line-height:1.5;color:#555;font-family:monospace;white-space:pre-wrap}
+.ex-card-info{padding:14px}
+.ex-card-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
+.ex-card-title{font-size:13px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
+.ex-card-meta{font-size:11px;color:#555;margin-bottom:10px}
+.ex-card-btn{width:100%;padding:8px;background:#5B4FE8;color:#fff;border:none;border-radius:7px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
+.ex-card-btn:hover{background:#4a3fd4}
+
+/* TESTIMONIALS SCROLL */
+.avis-section{padding:80px 0;overflow:hidden;position:relative}
+.avis-section::before,.avis-section::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:1}
+.avis-section::before{left:0;background:linear-gradient(to right,#0e0e10,transparent)}
+.avis-section::after{right:0;background:linear-gradient(to left,#0e0e10,transparent)}
+.avis-track{display:flex;gap:16px;animation:scroll 40s linear infinite;width:max-content}
+.avis-track:hover{animation-play-state:paused}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.avis-card{background:#141416;border:1px solid #222;border-radius:14px;padding:22px;width:280px;flex-shrink:0}
+.avis-stars{color:#5B4FE8;font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.avis-text{font-size:13px;color:#888;line-height:1.75;margin-bottom:16px;font-style:italic}
+.avis-author{display:flex;align-items:center;gap:10px}
+.avis-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+.avis-name{font-size:13px;font-weight:600;color:#f0f0ee}
+.avis-role{font-size:11px;color:#555}
+
+/* TRUSTED BY */
+.trusted-quote{max-width:800px;margin:0 auto;text-align:center;padding:80px 5%}
+.quote-text{font-size:clamp(18px,2.5vw,26px);font-weight:600;line-height:1.6;color:#ccc;margin-bottom:24px;font-style:italic}
+.quote-author{display:flex;align-items:center;justify-content:center;gap:12px}
+.quote-avatar{width:44px;height:44px;border-radius:50%;background:#5B4FE8;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+.quote-name{font-size:14px;font-weight:700;color:#f0f0ee}
+.quote-role{font-size:12px;color:#555}
+
+/* PRICING */
+.pricing-section{background:#0a0a0c;padding:100px 5%}
+.pricing-inner{max-width:1000px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.price-card{background:#141416;border:1px solid #222;border-radius:18px;padding:32px;position:relative;transition:border-color .2s}
+.price-card:hover{border-color:#333}
+.price-card.featured{border:2px solid #5B4FE8;background:#141416}
+.price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#5B4FE8;color:#fff;font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;white-space:nowrap;letter-spacing:.5px}
+.price-plan{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-bottom:10px}
+.price-amount{font-size:40px;font-weight:900;letter-spacing:-2px;color:#f0f0ee;line-height:1;margin-bottom:6px}
+.price-amount small{font-size:14px;color:#555;letter-spacing:0;font-weight:500}
+.price-desc{font-size:13px;color:#555;margin:10px 0 24px;line-height:1.6}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.price-features li{font-size:13px;color:#888;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.price-features li::before{content:'✓';color:#5B4FE8;font-weight:700;flex-shrink:0;margin-top:1px}
+.price-features li.na{color:#333}
+.price-features li.na::before{content:'—';color:#2a2a2a}
+.btn-price{display:block;text-align:center;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%}
+.btn-price-primary{background:#5B4FE8;color:#fff}
+.btn-price-primary:hover{background:#4a3fd4}
+.btn-price-ghost{background:transparent;border:1px solid #2a2a2a;color:#888}
+.btn-price-ghost:hover{border-color:#5B4FE8;color:#f0f0ee}
+
+/* FAQ */
+.faq-section{padding:100px 5%}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-grid{margin-top:48px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:#141416;border:1px solid #1e1e1e;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.faq-question{padding:20px 24px;font-size:15px;font-weight:600;color:#f0f0ee;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .2s}
+.faq-question:hover{background:#1a1a1a}
+.faq-icon{font-size:18px;color:#5B4FE8;flex-shrink:0;transition:transform .3s;font-weight:300}
+.faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#777;line-height:1.8}
+.faq-item.open .faq-answer{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* APP SECTION */
+.app-section{padding:80px 5% 40px}
+.app-section-inner{max-width:900px;margin:0 auto}
+.counter-bar{background:#1a1a2e;border:1px solid #2d2d5e;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.counter-bar span{font-size:13px;color:#777}
+.counter-bar strong{color:#a69af5}
+.steps-nav{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:40px}
+.step-dot{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#333;transition:color .3s}
+.step-dot.active{color:#f0f0ee}
+.step-dot.done{color:#5B4FE8}
+.step-dot-num{width:28px;height:28px;border-radius:50%;border:1.5px solid #2a2a2a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .3s}
+.step-dot.active .step-dot-num{border-color:#5B4FE8;background:#5B4FE8;color:#fff}
+.step-dot.done .step-dot-num{border-color:#5B4FE8;background:#5B4FE8;color:#fff}
+.step-line{width:48px;height:1px;background:#1e1e1e;margin:0 4px}
+.card{background:#141416;border:1px solid #1e1e1e;border-radius:20px;padding:36px;margin-bottom:20px}
+.card-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#444;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.card-title::after{content:'';flex:1;height:1px;background:#1e1e1e}
+textarea{width:100%;background:#0e0e10;border:1px solid #222;border-radius:12px;padding:16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;resize:vertical;transition:border .2s;outline:none}
+textarea:focus{border-color:#5B4FE8}
+textarea::placeholder{color:#333}
+.input-hint{font-size:12px;color:#444;margin-top:8px}
+.btn-primary{background:#5B4FE8;color:#fff;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .2s;width:100%;margin-top:20px;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:#4a3fd4;transform:translateY(-1px)}
+.btn-primary:disabled{background:#1e1e1e;color:#444;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:#f0f0ee;padding:12px 28px;border-radius:12px;font-weight:600;font-size:14px;border:1px solid #2a2a2a;cursor:pointer;transition:all .2s;margin-top:12px;width:100%;font-family:'Inter',sans-serif}
+.btn-secondary:hover{border-color:#5B4FE8;color:#5B4FE8}
+.loading{display:none;text-align:center;padding:60px 20px}
+.loading.show{display:block}
+.spinner{width:44px;height:44px;border:3px solid #1e1e1e;border-top-color:#5B4FE8;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:15px;color:#777;font-weight:500}
+.loading-sub{font-size:13px;color:#444;margin-top:8px}
+.results{display:none}
+.results.show{display:block}
+.score-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.score-big{display:flex;align-items:baseline;gap:6px}
+.score-big span{font-size:64px;font-weight:900;letter-spacing:-3px;color:#f0f0ee;line-height:1}
+.score-big small{font-size:18px;color:#444}
+.score-label{font-size:11px;color:#444;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.score-bar-wrap{background:#1a1a1a;border-radius:8px;height:6px;overflow:hidden;margin-bottom:28px}
+.score-bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#5B4FE8,#a69af5);width:0%;transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+.criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px}
+.criterion{background:#0e0e10;border:1px solid #1a1a1a;border-radius:10px;padding:14px}
+.criterion-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.criterion-name{font-size:12px;font-weight:600;color:#666}
+.criterion-score{font-size:12px;font-weight:700}
+.criterion-bar{background:#1a1a1a;border-radius:4px;height:3px;overflow:hidden}
+.criterion-fill{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+.score-high{color:#2ecc9a}.fill-high{background:#2ecc9a}
+.score-mid{color:#f5a623}.fill-mid{background:#f5a623}
+.score-low{color:#e74c5b}.fill-low{background:#e74c5b}
+.cv-optimized{background:#0e0e10;border:1px solid #1a1a1a;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:#bbb;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto}
+.cv-optimized::-webkit-scrollbar{width:3px}
+.cv-optimized::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px}
+.keywords-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.keyword{background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.keyword.missing{background:#1e1010;border-color:#3d1a1a;color:#e74c5b}
+.keyword.added{background:#0f1e14;border-color:#1a3d24;color:#2ecc9a}
+.suggestions-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.suggestion{background:#0e0e10;border-left:3px solid #5B4FE8;border-radius:0 10px 10px 0;padding:12px 16px}
+.suggestion-label{font-size:10px;font-weight:700;color:#5B4FE8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.suggestion-text{font-size:13px;color:#666;line-height:1.7}
+.copy-btn{background:#1a1a1a;border:1px solid #222;color:#666;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;margin-top:14px;font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:#5B4FE8;color:#5B4FE8}
+.copy-btn.copied{border-color:#2ecc9a;color:#2ecc9a}
+.tabs{display:flex;gap:4px;background:#0e0e10;border:1px solid #1a1a1a;border-radius:12px;padding:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;color:#444;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;min-width:80px}
+.tab.active{background:#141416;color:#f0f0ee;border:1px solid #222}
+.section-title-sm{font-size:11px;font-weight:700;color:#444;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-title-sm::after{content:'';flex:1;height:1px;background:#1a1a1a}
+.ldm-result{background:#0e0e10;border:1px solid #1a1a1a;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.9;color:#bbb;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto;margin-top:14px}
+.locked-card{background:#141416;border:1px solid #2d2d5e;border-radius:14px;padding:36px;text-align:center}
+.locked-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+.locked-card p{color:#666;font-size:14px;margin-bottom:20px;line-height:1.7}
+.paywall{display:none;background:#141416;border:1px solid #2d2d5e;border-radius:20px;padding:48px;text-align:center}
+.paywall.show{display:block}
+.paywall h3{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.paywall p{color:#666;font-size:15px;margin-bottom:32px;line-height:1.7}
+
+/* MODAL AUTH */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:#141416;border:1px solid #2a2a2a;border-radius:20px;padding:40px;width:100%;max-width:420px;margin:20px;position:relative}
+.modal h2{font-size:22px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+.modal p{font-size:14px;color:#666;margin-bottom:24px}
+.modal-tabs{display:flex;gap:4px;background:#0e0e10;border:1px solid #1a1a1a;border-radius:10px;padding:4px;margin-bottom:24px}
+.modal-tab{flex:1;padding:8px;border-radius:8px;border:none;background:transparent;color:#444;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.modal-tab.active{background:#1e1e1e;color:#f0f0ee}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:11px;font-weight:700;color:#555;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.form-input{width:100%;background:#0e0e10;border:1px solid #222;border-radius:10px;padding:12px 16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border .2s}
+.form-input:focus{border-color:#5B4FE8}
+.btn-full{width:100%;background:#5B4FE8;color:#fff;padding:13px;border-radius:10px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;margin-top:8px}
+.btn-full:hover{background:#4a3fd4}
+.btn-full:disabled{background:#1e1e1e;color:#444;cursor:not-allowed}
+.modal-error{background:#1e1010;border:1px solid #3d1a1a;color:#e74c5b;font-size:13px;padding:10px 14px;border-radius:8px;margin-bottom:16px;display:none}
+.modal-error.show{display:block}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:#444;font-size:20px;cursor:pointer;padding:4px}
+
+/* FINAL CTA */
+.final-cta{background:#111;padding:120px 5%;text-align:center}
+.final-cta h2{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto}
+.final-cta p{font-size:16px;color:#555;margin-bottom:40px}
+
+/* PAGES */
+.page{display:none;max-width:800px;margin:100px auto 60px;padding:0 5%}
+.page.show{display:block}
+.page h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:8px}
+.page-date{font-size:13px;color:#444;margin-bottom:40px}
+.page h2{font-size:18px;font-weight:700;margin:32px 0 12px}
+.page p{font-size:15px;color:#777;line-height:1.8;margin-bottom:16px}
+.page a{color:#5B4FE8;text-decoration:none}
+.contact-form{background:#141416;border:1px solid #1e1e1e;border-radius:16px;padding:32px;margin-top:32px}
+.contact-success{background:#0f1e14;border:1px solid #1a3d24;color:#2ecc9a;padding:16px;border-radius:10px;font-size:14px;font-weight:600;display:none;margin-top:16px}
+.contact-success.show{display:block}
+
+/* FOOTER */
+footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-brand .footer-logo{font-weight:900;font-size:20px;letter-spacing:-1px;margin-bottom:12px}
+.footer-brand .footer-logo span{color:#5B4FE8}
+.footer-brand p{font-size:13px;color:#444;line-height:1.7;max-width:260px}
+.footer-col h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:#444;text-decoration:none;margin-bottom:10px;transition:color .2s;cursor:pointer}
+.footer-col a:hover{color:#f0f0ee}
+.footer-bottom{border-top:1px solid #1a1a1a;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:#333}
+.footer-social{display:flex;gap:12px}
+.social-link{width:32px;height:32px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:background .2s}
+.social-link:hover{background:#2a2a2a}
+
+#mainContent{display:block}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .steps-grid{grid-template-columns:1fr}
+  .step-connector{display:none}
+  .features-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .criteria-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" onclick="showMain()" href="#">CV<span>Boost</span></a>
+    <div class="nav-links">
+      <a href="#comment-ca-marche">Comment ça marche</a>
+      <a href="/examples.html">Exemples</a>
+      <a href="/lettre.html">Lettre de motivation</a>
+      <a href="#avis">Avis</a>
+      <a href="#tarifs">Tarifs</a>
+    </div>
+    <div class="nav-actions">
+      <span class="user-email-nav" id="userEmailDisplay" style="display:none"></span>
+      <button class="btn-ghost-nav" id="btnConnexion" onclick="openAuth('login')">Connexion</button>
+      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-cta-nav">Pro — 14,90€/mois</a>
+      <button class="btn-ghost-nav" id="btnLogout" style="display:none" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+</nav>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAuth()">✕</button>
+    <h2 id="authTitle">Connexion</h2>
+    <p id="authSubtitle">Accède à ton compte CVBoost</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" id="tabLogin" onclick="switchTab('login')">Connexion</button>
+      <button class="modal-tab" id="tabSignup" onclick="switchTab('signup')">Inscription</button>
+    </div>
+    <div class="modal-error" id="authError"></div>
+    <div class="form-group"><label>Email</label><input type="email" class="form-input" id="authEmail" placeholder="ton@email.com"></div>
+    <div class="form-group"><label>Mot de passe</label><input type="password" class="form-input" id="authPassword" placeholder="••••••••"></div>
+    <button class="btn-full" id="authSubmit" onclick="handleAuth()">Se connecter</button>
+  </div>
+</div>
+
+<div id="mainContent">
+
+<!-- HERO -->
+<section style="padding-top:64px">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-badge"><div class="hero-badge-dot"></div> Propulsé par Claude AI</div>
+        <h1>Le meilleur<br><span class="accent">optimiseur de CV</span><br><span class="dim">par IA</span></h1>
+        <p class="hero-sub">Tu ne fixeras plus jamais une page blanche. CVBoost analyse ton CV, cible les mots-clés ATS et réécrit chaque ligne pour décrocher l'entretien.</p>
+        <div class="hero-ctas">
+          <a href="#optimiser" class="btn-hero-primary" onclick="scrollToApp()">Optimiser mon CV gratuitement →</a>
+          <a href="#comment-ca-marche" class="btn-hero-secondary">Voir comment ça marche ↓</a>
+        </div>
+        <div class="hero-social">
+          <div class="hero-avatars">
+            <div class="hero-avatar" style="background:#5B4FE8">ML</div>
+            <div class="hero-avatar" style="background:#2ecc9a">SC</div>
+            <div class="hero-avatar" style="background:#e74c8b">TB</div>
+            <div class="hero-avatar" style="background:#f5a623">AR</div>
+          </div>
+          <p class="hero-proof"><strong>+12 400 étudiants</strong> ont décroché un entretien ce mois</p>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="mockup-wrap">
+          <div class="mockup-header">
+            <div class="mockup-dot" style="background:#ff5f57"></div>
+            <div class="mockup-dot" style="background:#ffbd2e"></div>
+            <div class="mockup-dot" style="background:#28c840"></div>
+          </div>
+          <div class="mockup-score-section">
+            <div class="mockup-score-row">
+              <div>
+                <div class="mockup-score-label">Score ATS</div>
+                <div class="mockup-score-num">91</div>
+              </div>
+              <div class="mockup-score-improve">+44 pts ↑</div>
+            </div>
+            <div class="mockup-bar"><div class="mockup-bar-fill"></div></div>
+            <div class="mockup-criteria">
+              <div class="mockup-criterion">
+                <div class="mockup-criterion-name">Mots-clés ATS</div>
+                <div class="mockup-criterion-score" style="color:#2ecc9a">88/100</div>
+                <div class="mockup-criterion-bar"><div class="mockup-criterion-fill" style="background:#2ecc9a;width:88%"></div></div>
+              </div>
+              <div class="mockup-criterion">
+                <div class="mockup-criterion-name">Bullet points</div>
+                <div class="mockup-criterion-score" style="color:#2ecc9a">92/100</div>
+                <div class="mockup-criterion-bar"><div class="mockup-criterion-fill" style="background:#2ecc9a;width:92%"></div></div>
+              </div>
+              <div class="mockup-criterion">
+                <div class="mockup-criterion-name">Résumé pro</div>
+                <div class="mockup-criterion-score" style="color:#f5a623">76/100</div>
+                <div class="mockup-criterion-bar"><div class="mockup-criterion-fill" style="background:#f5a623;width:76%"></div></div>
+              </div>
+              <div class="mockup-criterion">
+                <div class="mockup-criterion-name">Mise en forme</div>
+                <div class="mockup-criterion-score" style="color:#2ecc9a">85/100</div>
+                <div class="mockup-criterion-bar"><div class="mockup-criterion-fill" style="background:#2ecc9a;width:85%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="mockup-keywords">
+            <span class="mockup-kw added">audit financier</span>
+            <span class="mockup-kw added">contrôle interne</span>
+            <span class="mockup-kw added">IFRS</span>
+            <span class="mockup-kw missing">SAP</span>
+            <span class="mockup-kw added">consolidation</span>
+            <span class="mockup-kw missing">Big 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos-bar">
+  <div class="logos-inner">
+    <span class="logos-label">Alumni recrutés chez</span>
+    <span class="logo-company">BNP Paribas</span>
+    <span class="logo-company">LVMH</span>
+    <span class="logo-company">L'Oréal</span>
+    <span class="logo-company">McKinsey</span>
+    <span class="logo-company">Deloitte</span>
+    <span class="logo-company">Capgemini</span>
+    <span class="logo-company">Amazon</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="stat-number">12<span>k+</span></div>
+      <div class="stat-desc">Étudiants aidés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">93<span>%</span></div>
+      <div class="stat-desc">Taux d'entretien</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">+<span>44</span></div>
+      <div class="stat-desc">Points ATS en moyenne</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">30<span>s</span></div>
+      <div class="stat-desc">Pour optimiser un CV</div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section how-bg" id="comment-ca-marche">
+  <div class="section-inner">
+    <div class="section-eyebrow">Comment ça marche</div>
+    <h2 class="section-title">De "pas de réponse"<br>à "entretien demain"</h2>
+    <p class="section-sub">Trois étapes. Trente secondes. Un CV qui déclenche des callbacks.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Colle ton CV et l'offre d'emploi</h3>
+        <p>Copie le texte brut de ton CV et l'offre ciblée. CVBoost lit les deux et comprend exactement ce que le recruteur cherche.</p>
+        <div class="step-visual">
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line partial"></div>
+          <div class="step-visual-line"></div>
+        </div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>L'IA analyse et optimise en 30 secondes</h3>
+        <p>Score ATS sur 23 critères, mots-clés manquants détectés, bullet points réécrits avec des métriques, résumé pro personnalisé.</p>
+        <div class="step-visual">
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line active"></div>
+        </div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Copie ton CV optimisé et candidate</h3>
+        <p>CV réécrit prêt à l'emploi, lettre de motivation générée automatiquement. Crée une version différente pour chaque offre en quelques clics.</p>
+        <div class="step-visual">
+          <div class="step-visual-line active"></div>
+          <div class="step-visual-line active" style="background:linear-gradient(90deg,#2ecc9a,#2ecc9a)"></div>
+          <div class="step-visual-line active" style="background:linear-gradient(90deg,#2ecc9a,#2ecc9a)"></div>
+          <div class="step-visual-line active" style="background:linear-gradient(90deg,#2ecc9a,#2ecc9a)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">Fonctionnalités</div>
+    <h2 class="section-title">Tout ce qu'il faut pour<br>décrocher l'entretien</h2>
+    <p class="section-sub">Pas un simple correcteur. Un moteur d'optimisation qui comprend les codes des recruteurs français.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#1a1a2e">🎯</div>
+        <h3>Ciblage de mots-clés ATS</h3>
+        <p>Détecte les mots-clés exacts de la fiche de poste et les intègre naturellement dans ton CV. Aucun keyword stuffing — juste ce que le recruteur veut voir.</p>
+        <span class="feature-tag">IA Claude</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#0f1e14">✍️</div>
+        <h3>Réécriture des bullet points</h3>
+        <p>Transforme "j'ai participé à des projets" en "piloté 3 projets clients générant 40k€ de CA, livré en avance sur délai". Chaque ligne compte.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#1e1010">📊</div>
+        <h3>Score ATS sur 23 critères</h3>
+        <p>Mesure l'efficacité de ton CV en temps réel sur 23 critères recruteurs : mots-clés, mise en forme, bullet points, résumé, compétences, expériences.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#1a1a2e">✉️</div>
+        <h3>Lettre de motivation IA</h3>
+        <p>Génère une lettre de motivation personnalisée alignée sur ton CV et l'offre d'emploi en 30 secondes. Disponible même sans CV.</p>
+        <span class="feature-tag">Nouveau</span>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#1e1a10">📝</div>
+        <h3>Résumé professionnel personnalisé</h3>
+        <p>Crée automatiquement un accroche percutante en haut de ton CV, adaptée à chaque offre. Le premier élément que lit le recruteur.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:#0f1e14">🔄</div>
+        <h3>Une version par candidature</h3>
+        <p>Crée autant de versions de ton CV que tu veux. Chaque candidature mérite un CV sur-mesure — CVBoost le fait en quelques secondes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXEMPLES PREVIEW -->
+<section class="section" id="exemples">
+  <div class="section-inner">
+    <div class="section-eyebrow">Exemples de CV</div>
+    <h2 class="section-title">Plus de 20 exemples de CV<br>pour t'inspirer</h2>
+    <p class="section-sub" style="margin-bottom:40px">Des CV réels par secteur. Clique pour voir et utiliser comme base pour ton optimisation.</p>
+    <div class="ex-filters">
+      <button class="ex-filter active" onclick="filterEx('all',this)">Tous</button>
+      <button class="ex-filter" onclick="filterEx('Finance',this)">Finance / Banque</button>
+      <button class="ex-filter" onclick="filterEx('Commerce',this)">Commerce / BizDev</button>
+      <button class="ex-filter" onclick="filterEx('Conseil',this)">Conseil / Strategy</button>
+      <button class="ex-filter" onclick="filterEx('Tech',this)">Tech / Data</button>
+    </div>
+    <div class="ex-grid" id="exGrid"></div>
+    <div style="text-align:center;margin-top:32px">
+      <a href="/examples.html" style="font-size:14px;color:#5B4FE8;text-decoration:none;font-weight:600">Voir les 20 exemples complets →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="avis-section" id="avis">
+  <div style="text-align:center;margin-bottom:40px;padding:0 5%">
+    <div class="section-eyebrow" style="text-align:center">Témoignages</div>
+    <h2 class="section-title" style="text-align:center">Ce qu'ils disent après CVBoost</h2>
+  </div>
+  <div class="avis-track" id="avisTrack"></div>
+</div>
+
+<!-- TRUSTED QUOTE -->
+<div class="trusted-quote">
+  <p class="quote-text">"CVBoost m'a fait gagner un temps fou. En 5 minutes mon CV était adapté à chaque offre. J'ai eu 4 entretiens en 2 semaines — dont McKinsey."</p>
+  <div class="quote-author">
+    <div class="quote-avatar">CD</div>
+    <div>
+      <div class="quote-name">Camille D.</div>
+      <div class="quote-role">M2 Strategy — HEC Paris · Stage décroché chez McKinsey</div>
+    </div>
+  </div>
+</div>
+
+<!-- APP SECTION -->
+<section class="app-section" id="optimiser">
+  <div class="app-section-inner">
+    <div style="text-align:center;margin-bottom:36px">
+      <div class="section-eyebrow" style="text-align:center">Essai gratuit</div>
+      <h2 class="section-title" style="text-align:center">Optimise ton CV maintenant</h2>
+      <p style="text-align:center;color:#555;font-size:15px">1 CV + 1 lettre de motivation gratuits. Aucune carte requise.</p>
+    </div>
+    <div class="counter-bar">
+      <span>CV restants</span><strong id="cvCount">1 / 1</strong>
+    </div>
+    <div class="counter-bar">
+      <span>Lettres de motivation restantes</span><strong id="ldmCount">1 / 1</strong>
+    </div>
+    <div class="steps-nav">
+      <div class="step-dot active" id="step1dot"><div class="step-dot-num">1</div><span>Ton CV</span></div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="step2dot"><div class="step-dot-num">2</div><span>L'offre</span></div>
+      <div class="step-line"></div>
+      <div class="step-dot" id="step3dot"><div class="step-dot-num">3</div><span>Résultat</span></div>
+    </div>
+    <div id="step1">
+      <div class="card">
+        <div class="card-title">Ton CV actuel</div>
+        <textarea id="cvInput" rows="12" placeholder="Colle ici le texte complet de ton CV..."></textarea>
+        <div class="input-hint">Conseil : copie-colle le texte brut de ton CV Word ou PDF. Plus tu mets de détails, meilleur sera le résultat.</div>
+        <button class="btn-primary" onclick="goStep2()">Continuer → Ajouter l'offre d'emploi</button>
+      </div>
+    </div>
+    <div id="step2" style="display:none">
+      <div class="card">
+        <div class="card-title">L'offre d'emploi ciblée</div>
+        <textarea id="jobInput" rows="10" placeholder="Colle ici le texte de l'offre d'emploi..."></textarea>
+        <div class="input-hint">Plus l'offre est complète, plus le ciblage ATS sera précis.</div>
+        <button class="btn-primary" onclick="optimizeCV()">Optimiser mon CV avec l'IA →</button>
+        <button class="btn-secondary" onclick="backStep1()">← Retour</button>
+      </div>
+    </div>
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text" id="loadingText">Analyse de ton CV en cours...</div>
+      <div class="loading-sub" id="loadingSub">L'IA lit l'offre et identifie les mots-clés critiques</div>
+    </div>
+    <div class="results" id="results">
+      <div class="card">
+        <div class="score-header">
+          <div><div class="score-label">Score ATS</div><div class="score-big"><span id="scoreNum">0</span><small>/ 100</small></div></div>
+          <div style="text-align:right"><div class="score-label">Amélioration</div><div style="font-size:28px;font-weight:900;color:#2ecc9a" id="scoreImprove">+0 pts</div></div>
+        </div>
+        <div class="score-bar-wrap"><div class="score-bar-fill" id="scoreBar"></div></div>
+        <div class="criteria-grid" id="criteriaGrid"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('cv')">CV optimisé</button>
+        <button class="tab" onclick="showTab('keywords')">Mots-clés ATS</button>
+        <button class="tab" onclick="showTab('tips')">Conseils</button>
+        <button class="tab" onclick="showTab('ldm')">Lettre de motivation</button>
+      </div>
+      <div id="tab-cv">
+        <div class="card" style="padding:24px">
+          <div class="section-title-sm">CV réécrit et optimisé</div>
+          <div class="cv-optimized" id="cvOptimized"></div>
+          <button class="copy-btn" id="copyBtn" onclick="copyCV()">📋 Copier le CV optimisé</button>
+        </div>
+      </div>
+      <div id="tab-keywords" style="display:none">
+        <div class="card">
+          <div class="section-title-sm">Mots-clés ajoutés</div>
+          <div class="keywords-wrap" id="keywordsAdded"></div>
+          <div class="section-title-sm" style="margin-top:20px">Mots-clés manquants</div>
+          <div class="keywords-wrap" id="keywordsMissing"></div>
+        </div>
+      </div>
+      <div id="tab-tips" style="display:none">
+        <div class="card">
+          <div class="section-title-sm">Conseils prioritaires</div>
+          <div class="suggestions-list" id="suggestionsList"></div>
+        </div>
+      </div>
+      <div id="tab-ldm" style="display:none">
+        <div class="card" id="ldmCard"></div>
+      </div>
+      <button class="btn-secondary" onclick="resetApp()" style="margin-top:8px">← Optimiser un autre CV</button>
+    </div>
+    <div class="paywall" id="paywall">
+      <div style="font-size:40px;margin-bottom:16px">🔒</div>
+      <h3>Tu as utilisé tes optimisations gratuites</h3>
+      <p>Choisis un plan pour continuer à optimiser tes candidatures.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="tarifs">
+  <div class="pricing-inner">
+    <div style="text-align:center">
+      <div class="section-eyebrow" style="text-align:center">Tarifs</div>
+      <h2 class="section-title" style="text-align:center">Simple et transparent</h2>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Commence gratuitement. Aucune carte requise.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-plan">Gratuit</div>
+        <div class="price-amount">0€<small>/mois</small></div>
+        <p class="price-desc">Pour découvrir CVBoost sans risque.</p>
+        <ul class="price-features">
+          <li>1 optimisation CV complète</li>
+          <li>1 lettre de motivation IA</li>
+          <li>Score ATS basique</li>
+          <li>20 exemples de CV</li>
+          <li class="na">Optimisations supplémentaires</li>
+          <li class="na">Accès illimité</li>
+        </ul>
+        <button class="btn-price btn-price-ghost" onclick="scrollToApp()">Commencer gratuitement</button>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">⚡ Le plus populaire</div>
+        <div class="price-plan">Boost</div>
+        <div class="price-amount">2,99€<small> unique</small></div>
+        <p class="price-desc">Pour une recherche de stage active.</p>
+        <ul class="price-features">
+          <li>5 optimisations CV</li>
+          <li>5 lettres de motivation IA</li>
+          <li>Score ATS sur 23 critères</li>
+          <li>Mots-clés ATS ciblés</li>
+          <li>Réécriture IA complète</li>
+          <li class="na">Accès illimité</li>
+        </ul>
+        <button class="btn-price btn-price-primary" onclick="window.location.href='https://buy.stripe.com/4gM4gyaowcts8Z948Y2go05'">Acheter — 2,99€</button>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Pro</div>
+        <div class="price-amount">14,90€<small>/mois</small></div>
+        <p class="price-desc">Pour ne jamais être bloqué.</p>
+        <ul class="price-features">
+          <li>CV illimités</li>
+          <li>Lettres de motivation illimitées</li>
+          <li>Score ATS sur 23 critères</li>
+          <li>Mots-clés ATS avancés</li>
+          <li>Résiliation en 1 clic</li>
+          <li>Support prioritaire</li>
+        </ul>
+        <button class="btn-price btn-price-ghost" onclick="window.location.href='https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06'">S'abonner — 14,90€/mois</button>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:#333;margin-top:20px">Garantie remboursement 30 jours sur tous les plans payants.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div style="text-align:center;margin-bottom:0">
+      <div class="section-eyebrow" style="text-align:center">FAQ</div>
+      <h2 class="section-title" style="text-align:center">Questions fréquentes</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Pourquoi utiliser CVBoost plutôt que de modifier mon CV moi-même ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">CVBoost analyse précisément les mots-clés que les systèmes ATS et les recruteurs cherchent dans chaque offre d'emploi. Faire ça manuellement prendrait 2 à 3 heures par candidature. CVBoost le fait en 30 secondes avec une précision que l'œil humain ne peut pas atteindre.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Les recruteurs verront-ils que j'ai utilisé l'IA ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">Non. CVBoost réécrit ton CV à partir de tes vraies expériences — il ne les invente pas. Le résultat est une version améliorée et mieux formulée de ton propre profil. Les recruteurs voient un CV clair, bien structuré et pertinent pour l'offre. C'est exactement ce qu'ils veulent.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Qu'est-ce qu'un score ATS et pourquoi c'est important ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">L'ATS (Applicant Tracking System) est un logiciel utilisé par 75% des grandes entreprises pour filtrer automatiquement les CV avant qu'un humain ne les lise. Si ton CV ne contient pas les bons mots-clés, il est éliminé automatiquement. CVBoost analyse ton score ATS sur 23 critères et t'indique exactement quoi améliorer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Comment fonctionne la lettre de motivation IA ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">Tu colles l'offre d'emploi et ton profil (optionnel). L'IA génère une lettre professionnelle en 30 secondes, alignée sur l'offre et ton expérience. Tu peux aussi générer une lettre sans CV via la page dédiée. Chaque lettre est unique et personnalisée pour chaque candidature.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Puis-je créer plusieurs versions de mon CV ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">Oui. Avec le plan Boost tu as 5 optimisations, avec le Pro tu as un accès illimité. Chaque offre d'emploi mérite une version de CV sur-mesure — CVBoost te permet de le faire rapidement pour chaque candidature.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Quelle est votre politique de remboursement ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">CVBoost offre une garantie remboursement 30 jours sur tous les plans payants (Boost et Pro). Si tu n'es pas satisfait, écris-nous à cvboost.fr@gmail.com et on te rembourse sans question.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">Mes données sont-elles sécurisées ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">Oui. CVBoost utilise Supabase pour stocker les données de compte (uniquement l'email) et ne partage jamais tes informations avec des tiers. Le contenu de ton CV est envoyé à l'API Claude (Anthropic) pour être analysé et n'est pas stocké. Tu peux demander la suppression de tes données à tout moment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">CVBoost fonctionne-t-il pour tous les secteurs ?<span class="faq-icon">+</span></div>
+        <div class="faq-answer">Oui. CVBoost est conçu pour les étudiants et jeunes diplômés français dans tous les secteurs : Finance, Commerce, Conseil, Tech, Marketing, RH, Ingénierie... L'IA s'adapte automatiquement au secteur de l'offre d'emploi que tu fournis.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Prêt à décrocher ton stage ou ton CDI ?</h2>
+  <p>Rejoins 12 400+ étudiants qui ont transformé leur recherche d'emploi avec CVBoost.</p>
+  <a href="#optimiser" class="btn-hero-primary" onclick="scrollToApp()" style="font-size:16px;padding:16px 36px">Optimiser mon CV gratuitement →</a>
+</div>
+
+</div><!-- end mainContent -->
+
+<!-- PAGES LÉGALES -->
+<div class="page" id="pageMentions">
+  <h1>Mentions légales</h1>
+  <p class="page-date">Dernière mise à jour : juin 2026</p>
+  <h2>Éditeur du site</h2>
+  <p>CVBoost est édité par Milann Rua, auto-entrepreneur (SIRET en cours d'attribution).<br>Email : <a href="mailto:cvboost.fr@gmail.com">cvboost.fr@gmail.com</a></p>
+  <h2>Hébergement</h2>
+  <p>Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
+  <h2>Propriété intellectuelle</h2>
+  <p>L'ensemble du contenu de CVBoost est la propriété exclusive de Milann Rua. Toute reproduction sans autorisation est interdite.</p>
+  <h2>Données personnelles</h2>
+  <p>CVBoost collecte uniquement l'adresse email lors de la création de compte. Ces données sont stockées via Supabase et ne sont jamais transmises à des tiers. Conformément au RGPD, vous pouvez demander la suppression de vos données à <a href="mailto:cvboost.fr@gmail.com">cvboost.fr@gmail.com</a>.</p>
+  <h2>Cookies</h2>
+  <p>CVBoost utilise uniquement des cookies techniques nécessaires au fonctionnement du service. Aucun cookie publicitaire n'est utilisé.</p>
+</div>
+
+<div class="page" id="pageCGU">
+  <h1>Conditions Générales d'Utilisation</h1>
+  <p class="page-date">Dernière mise à jour : juin 2026</p>
+  <h2>1. Objet</h2>
+  <p>Les présentes CGU régissent l'utilisation du service CVBoost. En utilisant CVBoost, vous acceptez ces conditions.</p>
+  <h2>2. Description du service</h2>
+  <p>CVBoost est une plateforme SaaS qui utilise l'IA pour optimiser des CV et générer des lettres de motivation personnalisées.</p>
+  <h2>3. Accès au service</h2>
+  <p>L'accès nécessite la création d'un compte avec une adresse email valide.</p>
+  <h2>4. Paiements</h2>
+  <p>Les paiements sont traités par Stripe. Le plan Boost à 2,99€ est un paiement unique. L'abonnement Pro à 14,90€/mois peut être résilié à tout moment. Garantie remboursement 30 jours.</p>
+  <h2>5. Limitation de responsabilité</h2>
+  <p>CVBoost ne garantit pas l'obtention d'un emploi. Le service est fourni "tel quel".</p>
+  <h2>6. Contact</h2>
+  <p><a href="mailto:cvboost.fr@gmail.com">cvboost.fr@gmail.com</a></p>
+</div>
+
+<div class="page" id="pageContact">
+  <h1>Contact</h1>
+  <p class="page-date">On te répond sous 24h.</p>
+  <p>Pour toute question, problème technique ou demande de remboursement.</p>
+  <div class="contact-form">
+    <div class="form-group"><label>Ton email</label><input type="email" class="form-input" id="contactEmail" placeholder="ton@email.com"></div>
+    <div class="form-group"><label>Sujet</label><input type="text" class="form-input" id="contactSubject" placeholder="Question sur mon abonnement..."></div>
+    <div class="form-group"><label>Message</label><textarea id="contactMessage" rows="6" placeholder="Décris ton problème ou ta question..."></textarea></div>
+    <button class="btn-primary" onclick="sendContact()" style="margin-top:0">Envoyer le message</button>
+    <div class="contact-success" id="contactSuccess">✓ Message envoyé !</div>
+  </div>
+  <p style="margin-top:24px;font-size:13px;color:#444">Ou directement : <a href="mailto:cvboost.fr@gmail.com" style="color:#5B4FE8">cvboost.fr@gmail.com</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">CV<span>Boost</span></div>
+        <p>Le meilleur optimiseur de CV par IA pour les étudiants et jeunes diplômés français. Propulsé par Claude AI.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produit</h4>
+        <a onclick="scrollToApp()">Optimiser mon CV</a>
+        <a href="/lettre.html">Lettre de motivation</a>
+        <a href="/examples.html">Exemples de CV</a>
+        <a href="/admin.html">Dashboard admin</a>
+      </div>
+      <div class="footer-col">
+        <h4>Ressources</h4>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#comment-ca-marche">Comment ça marche</a>
+        <a href="#avis">Témoignages</a>
+        <a onclick="openAuth('signup')">Créer un compte</a>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <a onclick="showPage('pageMentions')">Mentions légales</a>
+        <a onclick="showPage('pageCGU')">CGU</a>
+        <a onclick="showPage('pageContact')">Contact</a>
+        <a href="mailto:cvboost.fr@gmail.com">cvboost.fr@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 CVBoost — Milann Rua · Auto-entrepreneur</p>
+      <div class="footer-social">
+        <a class="social-link" href="mailto:cvboost.fr@gmail.com" title="Email">✉️</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="examples.js"></script>
+<script>
+const SUPABASE_URL='https://aunoabtcgtnglrhcvaax.supabase.co';
+const SUPABASE_KEY='sb_publishable_XNyuhby2B8CYEZDnjVedIQ_G_9XnZLu';
+const {createClient}=supabase;
+const sb=createClient(SUPABASE_URL,SUPABASE_KEY);
+const CV_FREE=1,LDM_FREE=1,CV_BOOST=5,LDM_BOOST=5;
+let currentCV='',resultData=null,currentUser=null,ldmGenerated=false,userProfile=null;
+
+sb.auth.onAuthStateChange(async(e,s)=>{currentUser=s?.user||null;await loadProfile();updateNavUI();});
+
+async function init(){
+  const{data:{session}}=await sb.auth.getSession();
+  currentUser=session?.user||null;
+  await loadProfile();
+  updateNavUI();
+  setTimeout(()=>{renderExGrid();renderAvis();loadTemplateIfAny();},100);
+}
+
+function isAdmin(){return currentUser&&currentUser.email==='milann.rua2@gmail.com';}
+
+function updateNavUI(){
+  const ed=document.getElementById('userEmailDisplay');
+  const bc=document.getElementById('btnConnexion');
+  const bl=document.getElementById('btnLogout');
+  if(currentUser){ed.style.display='block';ed.textContent=currentUser.email;bc.style.display='none';bl.style.display='block';}
+  else{ed.style.display='none';bc.style.display='block';bl.style.display='none';}
+  updateCounters();
+}
+
+async function logout(){await sb.auth.signOut();currentUser=null;updateNavUI();}
+
+// Charge le profil depuis Supabase (remplace le localStorage pour les connectés)
+async function loadProfile(){
+  if(!currentUser){userProfile=null;updateCounters();return;}
+  const{data,error}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+  if(!data){
+    // Profil absent (utilisateur créé avant le trigger) → on le crée
+    await sb.from('profiles').upsert({id:currentUser.id,email:currentUser.email,plan:'free',cv_used:0,ldm_used:0},{onConflict:'id'});
+    const{data:np}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+    userProfile=np;
+  }else{
+    userProfile=data;
+  }
+  updateCounters();
+}
+
+function getLimit(type){
+  if(isAdmin())return Infinity;
+  const plan=userProfile?.plan||'free';
+  if(plan==='pro')return Infinity;
+  if(plan==='boost')return type==='cv'?CV_FREE+CV_BOOST:LDM_FREE+LDM_BOOST;
+  return type==='cv'?CV_FREE:LDM_FREE;
+}
+
+function getUsed(type){
+  if(isAdmin())return 0;
+  if(userProfile)return type==='cv'?(userProfile.cv_used||0):(userProfile.ldm_used||0);
+  return parseInt(localStorage.getItem('cvboost_'+type+'_anon')||'0');
+}
+
+function hasCredits(type){
+  if(isAdmin())return true;
+  const lim=getLimit(type);
+  return lim===Infinity||getUsed(type)<lim;
+}
+
+// Après succès de l'IA : recharger le profil (le serveur a déjà incrémenté)
+// Pour les anonymes : incrémenter dans localStorage
+async function incrementUsed(type){
+  if(isAdmin())return;
+  if(currentUser){
+    await loadProfile();
+  }else{
+    const k='cvboost_'+type+'_anon';
+    localStorage.setItem(k,parseInt(localStorage.getItem(k)||'0')+1);
+    updateCounters();
+  }
+}
+
+function updateCounters(){
+  const cvUsed=getUsed('cv'),ldmUsed=getUsed('ldm');
+  const cvLim=getLimit('cv'),ldmLim=getLimit('ldm');
+  const cvRem=cvLim===Infinity?'∞':Math.max(0,cvLim-cvUsed);
+  const ldmRem=ldmLim===Infinity?'∞':Math.max(0,ldmLim-ldmUsed);
+  document.getElementById('cvCount').textContent=cvRem+' / '+(cvLim===Infinity?'∞':cvLim);
+  document.getElementById('ldmCount').textContent=ldmRem+' / '+(ldmLim===Infinity?'∞':ldmLim);
+  document.getElementById('cvCount').style.color=(!isAdmin()&&cvRem===0)?'#e74c5b':'#a69af5';
+  document.getElementById('ldmCount').style.color=(!isAdmin()&&ldmRem===0)?'#e74c5b':'#a69af5';
+}
+
+// AUTH
+function openAuth(tab){document.getElementById('authModal').classList.add('show');switchTab(tab);document.getElementById('authError').classList.remove('show');}
+function closeAuth(){document.getElementById('authModal').classList.remove('show');}
+function switchTab(tab){
+  const isLogin=tab==='login';
+  document.getElementById('tabLogin').classList.toggle('active',isLogin);
+  document.getElementById('tabSignup').classList.toggle('active',!isLogin);
+  document.getElementById('authTitle').textContent=isLogin?'Connexion':'Créer un compte';
+  document.getElementById('authSubtitle').textContent=isLogin?'Accède à ton compte CVBoost':'Rejoins 12 000+ étudiants';
+  document.getElementById('authSubmit').textContent=isLogin?'Se connecter':"S'inscrire";
+  document.getElementById('authError').classList.remove('show');
+}
+async function handleAuth(){
+  const email=document.getElementById('authEmail').value.trim();
+  const password=document.getElementById('authPassword').value;
+  const isLogin=document.getElementById('tabLogin').classList.contains('active');
+  const btn=document.getElementById('authSubmit');
+  if(!email||!password){showAuthError('Remplis tous les champs.');return;}
+  if(password.length<6){showAuthError('Mot de passe trop court (6 min).');return;}
+  btn.disabled=true;btn.textContent='Chargement...';
+  try{
+    let result=isLogin?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});
+    if(result.error){showAuthError(result.error.message==='Invalid login credentials'?'Email ou mot de passe incorrect.':result.error.message);}
+    else{closeAuth();currentUser=result.data.user;updateNavUI();if(!isLogin){alert('Compte créé ! Vérifie ton email.');sendWelcomeEmail(email);}}
+  }catch(e){showAuthError('Erreur. Réessaie.');}
+  btn.disabled=false;btn.textContent=document.getElementById('tabLogin').classList.contains('active')?'Se connecter':"S'inscrire";
+}
+function showAuthError(msg){const el=document.getElementById('authError');el.textContent=msg;el.classList.add('show');}
+
+// EMAIL
+async function sendWelcomeEmail(email){
+  try{await fetch('/api/send-welcome',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,prenom:email.split('@')[0]})});}
+  catch(e){console.log('Email non envoyé:',e);}
+}
+
+// APP
+function goStep2(){
+  const cv=document.getElementById('cvInput').value.trim();
+  if(cv.length<50){alert('Merci de coller ton CV complet.');return;}
+  currentCV=cv;
+  document.getElementById('step1').style.display='none';
+  document.getElementById('step2').style.display='block';
+  document.getElementById('step1dot').classList.replace('active','done');
+  document.getElementById('step2dot').classList.add('active');
+}
+function backStep1(){
+  document.getElementById('step2').style.display='none';
+  document.getElementById('step1').style.display='block';
+  document.getElementById('step2dot').classList.remove('active');
+  document.getElementById('step1dot').classList.replace('done','active');
+}
+async function optimizeCV(){
+  const job=document.getElementById('jobInput').value.trim();
+  if(job.length<30){alert("Merci de coller l'offre d'emploi complète.");return;}
+  if(!hasCredits('cv')){
+    document.getElementById('step2').style.display='none';
+    document.getElementById('paywall').classList.add('show');
+    document.getElementById('tarifs').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  document.getElementById('step2').style.display='none';
+  document.getElementById('loading').classList.add('show');
+  document.getElementById('step2dot').classList.replace('active','done');
+  document.getElementById('step3dot').classList.add('active');
+  const steps=[
+    ['Analyse de ton CV en cours...',"L'IA lit l'offre et identifie les mots-clés critiques"],
+    ['Optimisation des bullet points...',"Réécriture avec verbes d'action et métriques"],
+    ['Calcul du score ATS...','Vérification compatibilité filtres recruteurs'],
+    ['Finalisation...','Derniers ajustements en cours...']
+  ];
+  let li=0;
+  const interval=setInterval(()=>{if(li<steps.length){document.getElementById('loadingText').textContent=steps[li][0];document.getElementById('loadingSub').textContent=steps[li][1];li++;}},2200);
+  try{
+    const{data:{session}}=await sb.auth.getSession();
+    const response=await fetch('/api/optimize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cv:currentCV,job,token:session?.access_token||''})});
+    clearInterval(interval);
+    const data=await response.json();
+    if(!response.ok)throw new Error(data.error||'Erreur serveur');
+    displayResults(data);await incrementUsed('cv');
+  }catch(err){
+    clearInterval(interval);
+    document.getElementById('loading').classList.remove('show');
+    document.getElementById('step2').style.display='block';
+    alert('Erreur : '+err.message);
+  }
+}
+function displayResults(data){
+  document.getElementById('loading').classList.remove('show');
+  document.getElementById('results').classList.add('show');
+  ldmGenerated=false;
+  let s=0;const target=data.score_final;
+  document.getElementById('scoreImprove').textContent='+'+(data.score_final-data.score_initial)+' pts';
+  const iv=setInterval(()=>{s=Math.min(s+2,target);document.getElementById('scoreNum').textContent=s;document.getElementById('scoreBar').style.width=s+'%';if(s>=target)clearInterval(iv);},25);
+  const grid=document.getElementById('criteriaGrid');grid.innerHTML='';
+  data.criteres.forEach(c=>{const cls=c.score>=75?'high':c.score>=50?'mid':'low';grid.innerHTML+=`<div class="criterion"><div class="criterion-top"><span class="criterion-name">${c.nom}</span><span class="criterion-score score-${cls}">${c.score}/100</span></div><div class="criterion-bar"><div class="criterion-fill fill-${cls}" style="width:${c.score}%"></div></div></div>`;});
+  resultData=data;
+  document.getElementById('cvOptimized').textContent=data.cv_optimise;
+  document.getElementById('keywordsAdded').innerHTML=data.mots_cles_ajoutes.map(k=>`<span class="keyword added">${k}</span>`).join('');
+  document.getElementById('keywordsMissing').innerHTML=data.mots_cles_manquants.map(k=>`<span class="keyword missing">${k}</span>`).join('');
+  document.getElementById('suggestionsList').innerHTML=data.conseils.map(c=>`<div class="suggestion"><div class="suggestion-label">${c.titre}</div><div class="suggestion-text">${c.texte}</div></div>`).join('');
+}
+function showTab(tab){
+  ['cv','keywords','tips','ldm'].forEach(t=>{document.getElementById('tab-'+t).style.display=t===tab?'block':'none';});
+  document.querySelectorAll('.tab').forEach((btn,i)=>{btn.classList.toggle('active',['cv','keywords','tips','ldm'][i]===tab);});
+  if(tab==='ldm')renderLDM();
+}
+async function renderLDM(){
+  const card=document.getElementById('ldmCard');
+  if(!hasCredits('ldm')){
+    card.innerHTML=`<div class="locked-card"><div style="font-size:32px;margin-bottom:14px">✉️</div><h3>Plus de lettres disponibles</h3><p>Passe au Boost pour 5 lettres supplémentaires, ou au Pro pour un accès illimité.</p><button class="btn-primary" style="max-width:260px;margin:0 auto 10px" onclick="window.location.href='https://buy.stripe.com/4gM4gyaowcts8Z948Y2go05'">Boost — 2,99€</button><button class="btn-secondary" style="max-width:260px;margin:0 auto" onclick="window.location.href='https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06'">Pro — 14,90€/mois</button></div>`;
+    return;
+  }
+  if(ldmGenerated)return;
+  card.innerHTML=`<div class="section-title-sm">Lettre de motivation</div><div style="text-align:center;padding:36px"><div class="spinner" style="margin:0 auto 16px"></div><p style="color:#666;font-size:14px">Génération en cours...</p></div>`;
+  try{
+    const{data:{session}}=await sb.auth.getSession();
+    const response=await fetch('/api/optimize',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({cv:currentCV,job:document.getElementById('jobInput').value,mode:'ldm',token:session?.access_token||''})});
+    const data=await response.json();
+    const ldm=data.lettre_motivation||'Erreur lors de la génération.';
+    ldmGenerated=true;await incrementUsed('ldm');
+    card.innerHTML=`<div class="section-title-sm">Lettre de motivation générée</div><div class="ldm-result" id="ldmText">${ldm}</div><button class="copy-btn" onclick="copyLDM()">📋 Copier la lettre</button>`;
+  }catch(e){card.innerHTML=`<p style="color:#e74c5b;padding:20px">Erreur. Réessaie.</p>`;}
+}
+function copyLDM(){const el=document.getElementById('ldmText');if(!el)return;navigator.clipboard.writeText(el.textContent);alert('Lettre copiée !');}
+function copyCV(){if(!resultData)return;navigator.clipboard.writeText(resultData.cv_optimise);const btn=document.getElementById('copyBtn');btn.textContent='✓ Copié !';btn.classList.add('copied');setTimeout(()=>{btn.textContent='📋 Copier le CV optimisé';btn.classList.remove('copied');},2000);}
+function resetApp(){
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('paywall').classList.remove('show');
+  document.getElementById('step1').style.display='block';
+  document.getElementById('step2').style.display='none';
+  ['step1dot','step2dot','step3dot'].forEach(id=>document.getElementById(id).classList.remove('active','done'));
+  document.getElementById('step1dot').classList.add('active');
+  document.getElementById('cvInput').value='';
+  document.getElementById('jobInput').value='';
+  showTab('cv');ldmGenerated=false;
+}
+
+// EXAMPLES
+const CAT_COLORS={Finance:'#5B4FE8',Commerce:'#2ecc9a',Conseil:'#f5a623',Tech:'#e74c8b'};
+let exFilter='all';
+function filterEx(cat,btn){exFilter=cat;document.querySelectorAll('.ex-filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderExGrid();}
+function renderExGrid(){
+  if(typeof CV_EXAMPLES==='undefined')return;
+  const grid=document.getElementById('exGrid');if(!grid)return;
+  const filtered=exFilter==='all'?CV_EXAMPLES.slice(0,8):CV_EXAMPLES.filter(c=>c.cat===exFilter).slice(0,8);
+  grid.innerHTML=filtered.map(cv=>`<div class="ex-card" onclick="useExTemplate(${cv.id})"><div class="ex-card-preview"><div class="ex-card-preview-text">${cv.cv.substring(0,200)}...</div></div><div class="ex-card-info"><span class="ex-card-tag" style="background:${CAT_COLORS[cv.cat]}22;color:${CAT_COLORS[cv.cat]}">${cv.cat}</span><div class="ex-card-title">${cv.title}</div><div class="ex-card-meta">${cv.company} · ${cv.school}</div><button class="ex-card-btn" onclick="event.stopPropagation();useExTemplate(${cv.id})">Utiliser ce modèle</button></div></div>`).join('');
+}
+function useExTemplate(id){
+  if(typeof CV_EXAMPLES==='undefined')return;
+  const cv=CV_EXAMPLES.find(c=>c.id===id);if(!cv)return;
+  document.getElementById('cvInput').value=cv.cv;
+  scrollToApp();
+}
+
+// AVIS
+const AVIS=[
+  {text:"J'ai envoyé mon CV à 8 entreprises et eu 6 retours en une semaine. CVBoost a changé la donne.",name:"Mathilde L.",role:"M1 Finance — ESSEC",color:"#5B4FE8"},
+  {text:"Mon score ATS est passé de 38 à 91. J'ai décroché mon alternance chez KPMG.",name:"Thomas R.",role:"M2 Audit — ESCP",color:"#2ecc9a"},
+  {text:"La lettre de motivation générée était parfaite. Entretien chez L'Oréal obtenu.",name:"Sophie M.",role:"M1 Marketing — Audencia",color:"#e74c8b"},
+  {text:"En 5 minutes mon CV était adapté à chaque offre. 4 entretiens en 2 semaines.",name:"Antoine B.",role:"Bachelor — KEDGE",color:"#f5a623"},
+  {text:"Depuis 3 mois je galérais. Après CVBoost, réponse positive de McKinsey en 48h.",name:"Camille D.",role:"M2 Strategy — HEC",color:"#a69af5"},
+  {text:"Mon taux de réponse est passé de 10% à 65% grâce aux mots-clés ATS détectés.",name:"Lucas P.",role:"M2 Data — Dauphine",color:"#5B4FE8"},
+  {text:"Produit incroyable. Facile à utiliser et résultats bluffants. Je recommande à tous.",name:"Emma T.",role:"M1 Commerce — emlyon",color:"#2ecc9a"},
+  {text:"CVBoost a mis en valeur mes expériences avec les bons mots. Résultat : stage chez BNP.",name:"Romain C.",role:"M2 Finance — Sciences Po",color:"#e74c8b"},
+  {text:"La fonctionnalité de ciblage par offre est révolutionnaire. Chaque candidature est personnalisée.",name:"Julie F.",role:"M2 Conseil — CentraleSupélec",color:"#f5a623"},
+  {text:"2h pour adapter mon CV avant, maintenant 5 minutes. Parfait pour les candidatures en masse.",name:"Kevin W.",role:"Ingénieur — Polytechnique",color:"#a69af5"},
+  {text:"La qualité des bullet points réécrits est impressionnante. Chaque action est quantifiée.",name:"Sarah N.",role:"M2 RH — Sciences Po",color:"#5B4FE8"},
+  {text:"Je recommande CVBoost à tous mes amis. Meilleur investissement pour booster sa carrière.",name:"Paul V.",role:"CDI obtenu — ESCP",color:"#2ecc9a"}
+];
+function renderAvis(){
+  const track=document.getElementById('avisTrack');if(!track)return;
+  const all=[...AVIS,...AVIS];
+  track.innerHTML=all.map(a=>`<div class="avis-card"><div class="avis-stars">★★★★★</div><p class="avis-text">"${a.text}"</p><div class="avis-author"><div class="avis-avatar" style="background:${a.color}">${a.name.split(' ').map(n=>n[0]).join('')}</div><div><div class="avis-name">${a.name}</div><div class="avis-role">${a.role}</div></div></div></div>`).join('');
+}
+
+// FAQ
+function toggleFaq(el){
+  const item=el.parentElement;
+  document.querySelectorAll('.faq-item').forEach(i=>{if(i!==item)i.classList.remove('open');});
+  item.classList.toggle('open');
+}
+
+// PAGES
+function showPage(pageId){
+  document.getElementById('mainContent').style.display='none';
+  ['pageMentions','pageCGU','pageContact'].forEach(p=>document.getElementById(p).classList.remove('show'));
+  document.getElementById(pageId).classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function showMain(){
+  ['pageMentions','pageCGU','pageContact'].forEach(p=>document.getElementById(p).classList.remove('show'));
+  document.getElementById('mainContent').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function sendContact(){
+  const email=document.getElementById('contactEmail').value.trim();
+  const subject=document.getElementById('contactSubject').value.trim();
+  const message=document.getElementById('contactMessage').value.trim();
+  if(!email||!message){alert('Merci de remplir tous les champs.');return;}
+  window.location.href=`mailto:cvboost.fr@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent('De: '+email+'\n\n'+message)}`;
+  document.getElementById('contactSuccess').classList.add('show');
+}
+
+function scrollToApp(){document.getElementById('optimiser').scrollIntoView({behavior:'smooth'});}
+
+function loadTemplateIfAny(){
+  const t=localStorage.getItem('cvboost_template');
+  if(t){document.getElementById('cvInput').value=t;localStorage.removeItem('cvboost_template');scrollToApp();}
+}
+
+document.getElementById('authModal').addEventListener('click',function(e){if(e.target===this)closeAuth();});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&document.getElementById('authModal').classList.contains('show'))handleAuth();
+  if(e.key==='Escape')closeAuth();
+});
+
+init();
+</script>
+</body>
+</html>
