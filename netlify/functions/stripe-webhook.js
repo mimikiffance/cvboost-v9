@@ -103,7 +103,7 @@ exports.handler = async (event) => {
   if (stripeEvent.type === 'checkout.session.completed') {
     const session = stripeEvent.data.object;
     const email = session.customer_details?.email || session.customer_email;
-    const amount = session.amount_total; // en centimes
+    const amount = session.amount_total ?? session.total_summary?.total ?? session.total_summary?.due;
 
     // Identifier le plan selon le montant payé
     let plan = null;
