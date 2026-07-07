@@ -4,96 +4,111 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CVBoost — 20 exemples de CV professionnels</title>
+<meta name="description" content="20 exemples de CV d'étudiants qui ont décroché des stages dans les meilleures entreprises françaises. Finance, Conseil, Commerce, Tech.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0e0e10;color:#f0f0ee;line-height:1.6;min-height:100vh}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,16,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #222;padding:0 5%}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:900;font-size:20px;letter-spacing:-1px;cursor:pointer;text-decoration:none;color:#f0f0ee}
-.logo span{color:#5B4FE8}
-.btn-nav{background:#5B4FE8;color:#fff;padding:8px 18px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none}
+body{font-family:'Inter',sans-serif;background:#ffffff;color:#111111;line-height:1.6;min-height:100vh}
 
-.hero{padding:120px 5% 60px;max-width:1200px;margin:0 auto;text-align:center}
-.hero-eyebrow{display:inline-block;background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:24px}
-h1{font-size:clamp(36px,5vw,60px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;margin-bottom:16px}
-h1 .accent{color:#5B4FE8}
-.hero-sub{font-size:17px;color:#888;max-width:500px;margin:0 auto 48px;line-height:1.7}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#ffffff;border-bottom:1px solid #eeeeee;padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#111;cursor:pointer}
+.logo span{color:#F5A623}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-switcher{display:flex;align-items:center;gap:2px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:8px;padding:3px}
+.lang-btn{background:none;border:none;font-size:11px;font-weight:700;color:#888;cursor:pointer;font-family:'Inter',sans-serif;padding:4px 8px;border-radius:5px;transition:all .2s;letter-spacing:.5px}
+.lang-btn.active{background:#F5A623;color:#111}
+.lang-btn:hover:not(.active){color:#111}
+.btn-nav{background:#F5A623;color:#111;padding:9px 18px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .2s;display:inline-block}
+.btn-nav:hover{background:#d4890f}
+
+/* HERO */
+.hero{padding:112px 5% 60px;max-width:1200px;margin:0 auto;text-align:center}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff8ee;border:1px solid #fde5b0;color:#c47d00;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+h1{font-size:clamp(34px,5vw,58px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;margin-bottom:14px;color:#111}
+h1 .accent{color:#F5A623}
+.hero-sub{font-size:17px;color:#666;max-width:520px;margin:0 auto 48px;line-height:1.75}
 
 /* STATS */
-.stats{display:flex;align-items:center;justify-content:center;gap:40px;margin-bottom:60px;flex-wrap:wrap}
+.stats{display:flex;align-items:center;justify-content:center;gap:48px;margin-bottom:56px;flex-wrap:wrap}
 .stat{text-align:center}
-.stat-num{font-size:32px;font-weight:900;letter-spacing:-1.5px;color:#f0f0ee}
-.stat-num span{color:#5B4FE8}
-.stat-label{font-size:13px;color:#666}
+.stat-num{font-size:36px;font-weight:900;letter-spacing:-1.5px;color:#111}
+.stat-num span{color:#F5A623}
+.stat-label{font-size:13px;color:#999;margin-top:2px}
+.stats-divider{width:1px;height:40px;background:#eeeeee}
 
 /* FILTERS */
 .filters{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap;padding:0 5%}
-.filter-btn{padding:8px 20px;border-radius:20px;border:1px solid #2a2a2a;background:transparent;color:#888;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.filter-btn:hover{border-color:#5B4FE8;color:#f0f0ee}
-.filter-btn.active{background:#5B4FE8;border-color:#5B4FE8;color:#fff}
+.filter-btn{padding:9px 20px;border-radius:20px;border:1px solid #e0e0e0;background:#ffffff;color:#777;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.filter-btn:hover{border-color:#F5A623;color:#111}
+.filter-btn.active{background:#F5A623;border-color:#F5A623;color:#111;font-weight:700}
 
 /* GRID */
-.examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto;padding:0 5% 80px}
-.cv-card{background:#141416;border:1px solid #222;border-radius:16px;overflow:hidden;transition:transform .2s,border-color .2s;cursor:pointer}
-.cv-card:hover{transform:translateY(-4px);border-color:#5B4FE8}
-.cv-preview{background:#1a1a1c;padding:20px;height:200px;overflow:hidden;position:relative;border-bottom:1px solid #222}
-.cv-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#1a1a1c)}
-.cv-preview-text{font-size:7px;line-height:1.5;color:#666;font-family:monospace;white-space:pre-wrap}
-.cv-preview-text .cv-name{font-size:9px;font-weight:700;color:#a69af5;display:block;margin-bottom:4px}
-.cv-info{padding:16px}
-.cv-tag{display:inline-block;background:#1a1a2e;color:#a69af5;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
-.cv-title{font-size:15px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px}
-.cv-meta{font-size:12px;color:#666;margin-bottom:14px}
-.cv-meta span{color:#888}
-.btn-use{width:100%;padding:10px;background:#5B4FE8;color:#fff;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
-.btn-use:hover{background:#4a3fd4}
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;max-width:1200px;margin:0 auto;padding:0 5% 80px}
+.cv-card{background:#ffffff;border:1px solid #eeeeee;border-radius:16px;overflow:hidden;transition:all .2s;cursor:pointer}
+.cv-card:hover{transform:translateY(-4px);border-color:#fde5b0;box-shadow:0 12px 40px rgba(0,0,0,.06)}
+.cv-preview{background:#f9f9f9;padding:20px;height:200px;overflow:hidden;position:relative;border-bottom:1px solid #eeeeee}
+.cv-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,#f9f9f9)}
+.cv-preview-text{font-size:7px;line-height:1.5;color:#aaa;font-family:monospace;white-space:pre-wrap}
+.cv-preview-text .cv-name{font-size:9px;font-weight:700;color:#555;display:block;margin-bottom:4px}
+.cv-info{padding:18px}
+.cv-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+.cv-title{font-size:15px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px;color:#111}
+.cv-meta{font-size:12px;color:#999;margin-bottom:14px}
+.cv-meta span{color:#666;font-weight:600}
+.btn-use{width:100%;padding:10px;background:#F5A623;color:#111;border:none;border-radius:8px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
+.btn-use:hover{background:#d4890f}
 
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.show{display:flex}
-.cv-modal{background:#141416;border:1px solid #2a2a2a;border-radius:20px;max-width:700px;width:100%;max-height:85vh;overflow-y:auto;position:relative}
+.cv-modal{background:#ffffff;border:1px solid #eeeeee;border-radius:20px;max-width:700px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 24px 80px rgba(0,0,0,.12)}
 .cv-modal::-webkit-scrollbar{width:4px}
-.cv-modal::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.modal-header{padding:24px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.modal-close{background:none;border:none;color:#555;font-size:20px;cursor:pointer;flex-shrink:0;padding:4px}
-.modal-body{padding:24px 28px}
-.modal-cv-text{background:#0e0e10;border:1px solid #1e1e1e;border-radius:12px;padding:24px;white-space:pre-wrap;font-size:13px;line-height:1.8;color:#ccc;font-family:'Inter',sans-serif;margin:16px 0 20px}
+.cv-modal::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
+.modal-header{padding:28px 28px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.modal-close{background:none;border:none;color:#aaa;font-size:20px;cursor:pointer;flex-shrink:0;padding:4px;transition:color .2s}
+.modal-close:hover{color:#111}
+.modal-body{padding:24px 28px 28px}
+.modal-cv-text{background:#f9f9f9;border:1px solid #eeeeee;border-radius:12px;padding:24px;white-space:pre-wrap;font-size:13px;line-height:1.8;color:#444;font-family:'Inter',sans-serif;margin:16px 0 20px;max-height:400px;overflow-y:auto}
 .modal-actions{display:flex;gap:12px}
-.btn-modal-primary{flex:1;padding:12px;background:#5B4FE8;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif}
-.btn-modal-secondary{flex:1;padding:12px;background:transparent;color:#f0f0ee;border:1px solid #333;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-modal-primary{flex:1;padding:13px;background:#F5A623;color:#111;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
+.btn-modal-primary:hover{background:#d4890f}
+.btn-modal-secondary{flex:1;padding:13px;background:#f5f5f5;color:#555;border:1px solid #e0e0e0;border-radius:10px;font-weight:600;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.btn-modal-secondary:hover{border-color:#111;color:#111}
 
 /* TESTIMONIALS */
-.testimonials-section{background:#111;padding:80px 0;overflow:hidden;position:relative}
-.testimonials-section::before,.testimonials-section::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:1}
-.testimonials-section::before{left:0;background:linear-gradient(to right,#111,transparent)}
-.testimonials-section::after{right:0;background:linear-gradient(to left,#111,transparent)}
-.testi-title{text-align:center;font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:-1.5px;margin-bottom:40px;padding:0 5%}
-.testi-track{display:flex;gap:20px;animation:scroll 35s linear infinite;width:max-content}
+.testimonials-section{background:#fafafa;border-top:1px solid #eeeeee;border-bottom:1px solid #eeeeee;padding:80px 0;overflow:hidden;position:relative}
+.testimonials-section::before,.testimonials-section::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:1}
+.testimonials-section::before{left:0;background:linear-gradient(to right,#fafafa,transparent)}
+.testimonials-section::after{right:0;background:linear-gradient(to left,#fafafa,transparent)}
+.testi-title{text-align:center;font-size:clamp(20px,3vw,30px);font-weight:900;letter-spacing:-1px;color:#111;margin-bottom:40px;padding:0 5%}
+.testi-track{display:flex;gap:16px;animation:scroll 35s linear infinite;width:max-content}
 .testi-track:hover{animation-play-state:paused}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.testi-card{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:16px;padding:24px;width:300px;flex-shrink:0}
-.testi-stars{color:#5B4FE8;font-size:14px;letter-spacing:2px;margin-bottom:12px}
-.testi-text{font-size:14px;color:#999;line-height:1.7;margin-bottom:16px;font-style:italic}
+.testi-card{background:#ffffff;border:1px solid #eeeeee;border-radius:16px;padding:24px;width:300px;flex-shrink:0}
+.testi-stars{color:#F5A623;font-size:14px;letter-spacing:2px;margin-bottom:12px}
+.testi-text{font-size:14px;color:#666;line-height:1.7;margin-bottom:16px;font-style:italic}
 .testi-author{display:flex;align-items:center;gap:10px}
 .testi-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0}
-.testi-name{font-size:13px;font-weight:600;color:#f0f0ee}
-.testi-role{font-size:11px;color:#666}
+.testi-name{font-size:13px;font-weight:700;color:#111}
+.testi-role{font-size:11px;color:#999}
 
 /* CTA */
 .cta-section{padding:100px 5%;text-align:center;max-width:700px;margin:0 auto}
-.cta-section h2{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-2px;margin-bottom:16px}
-.cta-section p{font-size:16px;color:#888;margin-bottom:36px}
-.btn-cta{display:inline-block;background:#5B4FE8;color:#fff;padding:15px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s}
-.btn-cta:hover{background:#4a3fd4;transform:translateY(-2px)}
+.cta-section h2{font-size:clamp(26px,4vw,44px);font-weight:900;letter-spacing:-2px;margin-bottom:14px;color:#111}
+.cta-section p{font-size:16px;color:#666;margin-bottom:36px;line-height:1.7}
+.btn-cta{display:inline-block;background:#F5A623;color:#111;padding:15px 36px;border-radius:12px;font-weight:700;font-size:16px;text-decoration:none;transition:all .2s}
+.btn-cta:hover{background:#d4890f;transform:translateY(-2px)}
 
-footer{border-top:1px solid #1a1a1a;padding:32px 5%;text-align:center}
-.footer-copy{font-size:13px;color:#444}
-.footer-copy a{color:#5B4FE8;text-decoration:none}
+/* FOOTER */
+footer{background:#111111;border-top:1px solid #222;padding:32px 5%;text-align:center}
+.footer-copy{font-size:13px;color:#555}
+.footer-copy a{color:#F5A623;text-decoration:none}
 
-@media(max-width:600px){.examples-grid{grid-template-columns:1fr}.stats{gap:24px}}
+@media(max-width:600px){.examples-grid{grid-template-columns:1fr}.stats{gap:24px}.stats-divider{display:none}.modal-actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -101,29 +116,39 @@ footer{border-top:1px solid #1a1a1a;padding:32px 5%;text-align:center}
 <nav>
   <div class="nav-inner">
     <a href="/" class="logo">CV<span>Boost</span></a>
-    <a href="/" class="btn-nav">Optimiser mon CV →</a>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="/" class="btn-nav" data-i18n="nav.optimise">Optimiser mon CV →</a>
+    </div>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-eyebrow">✦ Bibliothèque de CV</div>
-  <h1>20 exemples de CV<br><span class="accent">qui décrochent</span><br>des entretiens</h1>
-  <p class="hero-sub">Des CV rédigés par des étudiants qui ont obtenu des stages et alternances dans les meilleures entreprises françaises.</p>
+  <div class="hero-eyebrow" data-i18n="hero.eyebrow">✦ Bibliothèque de CV</div>
+  <h1 data-i18n="hero.h1">20 exemples de CV<br><span class="accent">qui décrochent</span><br>des entretiens</h1>
+  <p class="hero-sub" data-i18n="hero.sub">Des CV rédigés par des étudiants qui ont obtenu des stages et alternances dans les meilleures entreprises françaises.</p>
 </div>
 
 <div class="stats">
-  <div class="stat"><div class="stat-num">20<span>+</span></div><div class="stat-label">CV exemples</div></div>
-  <div class="stat"><div class="stat-num">4<span></span></div><div class="stat-label">Secteurs couverts</div></div>
-  <div class="stat"><div class="stat-num">93<span>%</span></div><div class="stat-label">Taux d'entretien</div></div>
-  <div class="stat"><div class="stat-num">12k<span>+</span></div><div class="stat-label">Étudiants aidés</div></div>
+  <div class="stat"><div class="stat-num">20<span>+</span></div><div class="stat-label" data-i18n="stat1">CV exemples</div></div>
+  <div class="stats-divider"></div>
+  <div class="stat"><div class="stat-num">4<span></span></div><div class="stat-label" data-i18n="stat2">Secteurs couverts</div></div>
+  <div class="stats-divider"></div>
+  <div class="stat"><div class="stat-num">93<span>%</span></div><div class="stat-label" data-i18n="stat3">Taux d'entretien</div></div>
+  <div class="stats-divider"></div>
+  <div class="stat"><div class="stat-num">12k<span>+</span></div><div class="stat-label" data-i18n="stat4">Étudiants aidés</div></div>
 </div>
 
-<div class="filters">
-  <button class="filter-btn active" onclick="filterCVs('all')">Tous (20)</button>
-  <button class="filter-btn" onclick="filterCVs('Finance')">Finance / Banque (5)</button>
-  <button class="filter-btn" onclick="filterCVs('Commerce')">Commerce / BizDev (5)</button>
-  <button class="filter-btn" onclick="filterCVs('Conseil')">Conseil / Strategy (5)</button>
-  <button class="filter-btn" onclick="filterCVs('Tech')">Tech / Data (5)</button>
+<div class="filters" id="filterBar">
+  <button class="filter-btn active" onclick="filterCVs('all')" data-i18n="filter.all">Tous (20)</button>
+  <button class="filter-btn" onclick="filterCVs('Finance')" data-i18n="filter.finance">Finance / Banque (5)</button>
+  <button class="filter-btn" onclick="filterCVs('Commerce')" data-i18n="filter.commerce">Commerce / BizDev (5)</button>
+  <button class="filter-btn" onclick="filterCVs('Conseil')" data-i18n="filter.conseil">Conseil / Strategy (5)</button>
+  <button class="filter-btn" onclick="filterCVs('Tech')" data-i18n="filter.tech">Tech / Data (5)</button>
 </div>
 
 <div class="examples-grid" id="examplesGrid"></div>
@@ -135,7 +160,7 @@ footer{border-top:1px solid #1a1a1a;padding:32px 5%;text-align:center}
 
 <!-- TESTIMONIALS -->
 <div class="testimonials-section">
-  <h2 class="testi-title">Ce qu'ils disent après avoir utilisé CVBoost</h2>
+  <h2 class="testi-title" data-i18n="testi.title">Ce qu'ils disent après avoir utilisé CVBoost</h2>
   <div style="overflow:hidden">
     <div class="testi-track" id="testiTrack"></div>
   </div>
@@ -143,36 +168,100 @@ footer{border-top:1px solid #1a1a1a;padding:32px 5%;text-align:center}
 
 <!-- CTA -->
 <div class="cta-section">
-  <h2>Prêt à optimiser ton CV ?</h2>
-  <p>Utilise l'un de ces exemples comme base, puis laisse l'IA CVBoost l'optimiser pour ton offre d'emploi ciblée.</p>
-  <a href="/" class="btn-cta">Optimiser mon CV gratuitement →</a>
+  <h2 data-i18n="cta.title">Prêt à optimiser ton CV ?</h2>
+  <p data-i18n="cta.sub">Utilise l'un de ces exemples comme base, puis laisse l'IA CVBoost l'optimiser pour ton offre d'emploi ciblée.</p>
+  <a href="/" class="btn-cta" data-i18n="cta.btn">Optimiser mon CV gratuitement →</a>
 </div>
 
 <footer>
-  <p class="footer-copy">© 2026 CVBoost — <a href="/">Retour à l'accueil</a> · <a href="mailto:cvboost.fr@gmail.com">Contact</a></p>
+  <p class="footer-copy">© 2026 CVBoost — <a href="/" data-i18n="footer.home">Retour à l'accueil</a> · <a href="mailto:cvboost.fr@gmail.com" data-i18n="footer.contact">Contact</a></p>
 </footer>
+
+<script>
+/* ─── i18n ─── */
+const T={
+  fr:{
+    'nav.optimise':'Optimiser mon CV →',
+    'hero.eyebrow':'✦ Bibliothèque de CV',
+    'hero.h1':'20 exemples de CV<br><span class="accent">qui décrochent</span><br>des entretiens',
+    'hero.sub':'Des CV rédigés par des étudiants qui ont obtenu des stages et alternances dans les meilleures entreprises françaises.',
+    'stat1':'CV exemples','stat2':'Secteurs couverts','stat3':'Taux d\'entretien','stat4':'Étudiants aidés',
+    'filter.all':'Tous (20)','filter.finance':'Finance / Banque (5)','filter.commerce':'Commerce / BizDev (5)','filter.conseil':'Conseil / Strategy (5)','filter.tech':'Tech / Data (5)',
+    'testi.title':'Ce qu\'ils disent après avoir utilisé CVBoost',
+    'cta.title':'Prêt à optimiser ton CV ?',
+    'cta.sub':'Utilise l\'un de ces exemples comme base, puis laisse l\'IA CVBoost l\'optimiser pour ton offre d\'emploi ciblée.',
+    'cta.btn':'Optimiser mon CV gratuitement →',
+    'footer.home':'Retour à l\'accueil','footer.contact':'Contact',
+    'modal.use':'Optimiser ce CV avec l\'IA →','modal.copy':'📋 Copier',
+    'card.use':'Utiliser ce modèle →','card.exp':'Expérience chez'
+  },
+  en:{
+    'nav.optimise':'Optimize my resume →',
+    'hero.eyebrow':'✦ Resume Library',
+    'hero.h1':'20 resume examples<br><span class="accent">that land</span><br>interviews',
+    'hero.sub':'Resumes written by students who got internships and apprenticeships at top French companies.',
+    'stat1':'Resume examples','stat2':'Sectors covered','stat3':'Interview rate','stat4':'Students helped',
+    'filter.all':'All (20)','filter.finance':'Finance / Banking (5)','filter.commerce':'Business / BizDev (5)','filter.conseil':'Consulting / Strategy (5)','filter.tech':'Tech / Data (5)',
+    'testi.title':'What they say after using CVBoost',
+    'cta.title':'Ready to optimize your resume?',
+    'cta.sub':'Use one of these examples as a base, then let CVBoost AI optimize it for your target job listing.',
+    'cta.btn':'Optimize my resume for free →',
+    'footer.home':'Back to home','footer.contact':'Contact',
+    'modal.use':'Optimize this resume with AI →','modal.copy':'📋 Copy',
+    'card.use':'Use this template →','card.exp':'Experience at'
+  },
+  es:{
+    'nav.optimise':'Optimizar mi CV →',
+    'hero.eyebrow':'✦ Biblioteca de CV',
+    'hero.h1':'20 ejemplos de CV<br><span class="accent">que consiguen</span><br>entrevistas',
+    'hero.sub':'CVs redactados por estudiantes que consiguieron prácticas en las mejores empresas.',
+    'stat1':'Ejemplos de CV','stat2':'Sectores cubiertos','stat3':'Tasa de entrevista','stat4':'Estudiantes ayudados',
+    'filter.all':'Todos (20)','filter.finance':'Finanzas / Banca (5)','filter.commerce':'Comercio / BizDev (5)','filter.conseil':'Consultoría / Estrategia (5)','filter.tech':'Tech / Data (5)',
+    'testi.title':'Lo que dicen después de usar CVBoost',
+    'cta.title':'¿Listo para optimizar tu CV?',
+    'cta.sub':'Usa uno de estos ejemplos como base, luego deja que la IA de CVBoost lo optimice para tu oferta objetivo.',
+    'cta.btn':'Optimizar mi CV gratis →',
+    'footer.home':'Volver al inicio','footer.contact':'Contacto',
+    'modal.use':'Optimizar este CV con IA →','modal.copy':'📋 Copiar',
+    'card.use':'Usar esta plantilla →','card.exp':'Experiencia en'
+  }
+};
+
+let currentLang='fr';
+function setLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][k])el.innerHTML=T[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+  renderCards();
+}
+</script>
 
 <script src="examples.js"></script>
 <script>
-const TESTIMONIALS = [
-  {text:"J'ai envoyé mon CV optimisé à 8 entreprises et j'ai eu 6 retours positifs en une semaine. CVBoost a vraiment changé la donne.",name:"Mathilde L.",role:"M1 Finance — ESSEC",color:"#5B4FE8"},
+const TESTIMONIALS=[
+  {text:"J'ai envoyé mon CV optimisé à 8 entreprises et j'ai eu 6 retours positifs en une semaine. CVBoost a vraiment changé la donne.",name:"Mathilde L.",role:"M1 Finance — ESSEC",color:"#F5A623"},
   {text:"Le score ATS m'a ouvert les yeux. Mon CV original était à 38/100, après CVBoost il était à 91. J'ai décroché mon alternance chez KPMG.",name:"Thomas R.",role:"M2 Audit — ESCP",color:"#2ecc9a"},
   {text:"La lettre de motivation générée était parfaite. Je l'ai utilisée telle quelle pour ma candidature chez L'Oréal. Entretien obtenu !",name:"Sophie M.",role:"M1 Marketing — Audencia",color:"#e74c8b"},
-  {text:"Simple, rapide, efficace. En 5 minutes mon CV était adapté à chaque offre. J'ai eu 4 entretiens en 2 semaines.",name:"Antoine B.",role:"Bachelor — KEDGE",color:"#f5a623"},
-  {text:"Je galérais depuis 3 mois à trouver un stage. Après CVBoost, j'ai reçu une réponse positive de McKinsey en 48h.",name:"Camille D.",role:"M2 Strategy — HEC",color:"#a69af5"},
-  {text:"Les mots-clés ATS détectés étaient exactement ce que les recruteurs cherchent. Mon taux de réponse est passé de 10% à 65%.",name:"Lucas P.",role:"M2 Data — Dauphine",color:"#5B4FE8"},
-  {text:"Produit incroyable pour les étudiants. Facile à utiliser et les résultats sont bluffants. Je recommande à tous mes camarades.",name:"Emma T.",role:"M1 Commerce — emlyon",color:"#2ecc9a"},
-  {text:"J'avais un bon profil mais un mauvais CV. CVBoost a mis en valeur mes expériences avec les bons mots. Résultat : stage chez BNP.",name:"Romain C.",role:"M2 Finance — Sciences Po",color:"#e74c8b"},
-  {text:"La fonctionnalité de ciblage par offre d'emploi est révolutionnaire. Chaque candidature est maintenant personnalisée en quelques clics.",name:"Julie F.",role:"M2 Conseil — CentraleSupélec",color:"#f5a623"},
-  {text:"CVBoost m'a fait gagner un temps fou. Au lieu de passer 2h à adapter mon CV, ça prend 5 minutes. Parfait pour les candidatures en masse.",name:"Kevin W.",role:"Ingénieur — Polytechnique",color:"#a69af5"},
-  {text:"La qualité des bullet points réécrits est impressionnante. Chaque action est quantifiée et orientée résultats. Très professionnel.",name:"Sarah N.",role:"M2 RH — Sciences Po",color:"#5B4FE8"},
-  {text:"Je recommande CVBoost à tous mes amis en recherche d'emploi. C'est le meilleur investissement pour booster sa carrière.",name:"Paul V.",role:"CDI obtenu — ESCP",color:"#2ecc9a"},
+  {text:"Simple, rapide, efficace. En 5 minutes mon CV était adapté à chaque offre. J'ai eu 4 entretiens en 2 semaines.",name:"Antoine B.",role:"Bachelor — KEDGE",color:"#5B4FE8"},
+  {text:"Je galérais depuis 3 mois à trouver un stage. Après CVBoost, j'ai reçu une réponse positive de McKinsey en 48h.",name:"Camille D.",role:"M2 Strategy — HEC",color:"#F5A623"},
+  {text:"Les mots-clés ATS détectés étaient exactement ce que les recruteurs cherchent. Mon taux de réponse est passé de 10% à 65%.",name:"Lucas P.",role:"M2 Data — Dauphine",color:"#2ecc9a"},
+  {text:"Produit incroyable pour les étudiants. Facile à utiliser et les résultats sont bluffants. Je recommande à tous mes camarades.",name:"Emma T.",role:"M1 Commerce — emlyon",color:"#e74c8b"},
+  {text:"J'avais un bon profil mais un mauvais CV. CVBoost a mis en valeur mes expériences avec les bons mots. Résultat : stage chez BNP.",name:"Romain C.",role:"M2 Finance — Sciences Po",color:"#5B4FE8"},
+  {text:"La fonctionnalité de ciblage par offre est révolutionnaire. Chaque candidature est maintenant personnalisée en quelques clics.",name:"Julie F.",role:"M2 Conseil — CentraleSupélec",color:"#F5A623"},
+  {text:"CVBoost m'a fait gagner un temps fou. Au lieu de 2h pour adapter mon CV, ça prend 5 minutes. Parfait pour les candidatures en masse.",name:"Kevin W.",role:"Ingénieur — Polytechnique",color:"#2ecc9a"},
+  {text:"La qualité des bullet points réécrits est impressionnante. Chaque action est quantifiée et orientée résultats. Très professionnel.",name:"Sarah N.",role:"M2 RH — Sciences Po",color:"#e74c8b"},
+  {text:"Je recommande CVBoost à tous mes amis en recherche d'emploi. C'est le meilleur investissement pour booster sa carrière.",name:"Paul V.",role:"CDI obtenu — ESCP",color:"#5B4FE8"},
 ];
 
-// Render testimonials (doubled for infinite scroll)
-const track = document.getElementById('testiTrack');
-const allTestis = [...TESTIMONIALS, ...TESTIMONIALS];
-track.innerHTML = allTestis.map(t => `
+const track=document.getElementById('testiTrack');
+const allTestis=[...TESTIMONIALS,...TESTIMONIALS];
+track.innerHTML=allTestis.map(t=>`
   <div class="testi-card">
     <div class="testi-stars">★★★★★</div>
     <p class="testi-text">"${t.text}"</p>
@@ -182,88 +271,95 @@ track.innerHTML = allTestis.map(t => `
     </div>
   </div>`).join('');
 
-// Render CV cards
-let currentFilter = 'all';
+let currentFilter='all';
 
-function filterCVs(cat) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.includes(cat === 'all' ? 'Tous' : cat));
+function filterCVs(cat){
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    const key=btn.getAttribute('data-i18n')||'';
+    const isAll=cat==='all'&&key==='filter.all';
+    const isCat=key==='filter.'+cat.toLowerCase();
+    btn.classList.toggle('active',isAll||isCat);
   });
   renderCards();
 }
 
-function renderCards() {
-  const grid = document.getElementById('examplesGrid');
-  const filtered = currentFilter === 'all' ? CV_EXAMPLES : CV_EXAMPLES.filter(cv => cv.cat === currentFilter);
-  const catColors = {Finance:'#5B4FE8', Commerce:'#2ecc9a', Conseil:'#f5a623', Tech:'#e74c8b'};
+function renderCards(){
+  const grid=document.getElementById('examplesGrid');
+  const filtered=currentFilter==='all'?CV_EXAMPLES:CV_EXAMPLES.filter(cv=>cv.cat===currentFilter);
+  const catColors={Finance:'#F5A623',Commerce:'#2ecc9a',Conseil:'#5B4FE8',Tech:'#e74c8b'};
+  const catBg={Finance:'#fff8ee',Commerce:'#f0fff8',Conseil:'#f0eeff',Tech:'#fff0f5'};
+  const expLabel=T[currentLang]?.['card.exp']||'Expérience chez';
+  const useLabel=T[currentLang]?.['card.use']||'Utiliser ce modèle →';
 
-  grid.innerHTML = filtered.map(cv => `
+  grid.innerHTML=filtered.map(cv=>`
     <div class="cv-card" onclick="openModal(${cv.id})">
       <div class="cv-preview">
         <div class="cv-preview-text"><span class="cv-name">${cv.cv.split('\n')[0]}</span>${cv.cv.substring(cv.cv.indexOf('\n')+1,400)}...</div>
       </div>
       <div class="cv-info">
-        <div class="cv-tag" style="background:${catColors[cv.cat]}22;color:${catColors[cv.cat]}">${cv.cat}</div>
+        <div class="cv-tag" style="background:${catBg[cv.cat]};color:${catColors[cv.cat]}">${cv.cat}</div>
         <div class="cv-title">${cv.title}</div>
-        <div class="cv-meta">Expérience chez <span>${cv.company}</span> · ${cv.school} · ${cv.level}</div>
-        <button class="btn-use" onclick="event.stopPropagation();useTemplate(${cv.id})">Utiliser ce modèle →</button>
+        <div class="cv-meta">${expLabel} <span>${cv.company}</span> · ${cv.school} · ${cv.level}</div>
+        <button class="btn-use" onclick="event.stopPropagation();useTemplate(${cv.id})">${useLabel}</button>
       </div>
     </div>`).join('');
 }
 
-function openModal(id) {
-  const cv = CV_EXAMPLES.find(c => c.id === id);
-  if (!cv) return;
-  const catColors = {Finance:'#5B4FE8', Commerce:'#2ecc9a', Conseil:'#f5a623', Tech:'#e74c8b'};
-  document.getElementById('cvModalContent').innerHTML = `
+function openModal(id){
+  const cv=CV_EXAMPLES.find(c=>c.id===id);
+  if(!cv)return;
+  const catColors={Finance:'#F5A623',Commerce:'#2ecc9a',Conseil:'#5B4FE8',Tech:'#e74c8b'};
+  const catBg={Finance:'#fff8ee',Commerce:'#f0fff8',Conseil:'#f0eeff',Tech:'#fff0f5'};
+  const useLabel=T[currentLang]?.['modal.use']||'Optimiser ce CV avec l\'IA →';
+  const copyLabel=T[currentLang]?.['modal.copy']||'📋 Copier';
+  document.getElementById('cvModalContent').innerHTML=`
     <div class="modal-header">
       <div>
-        <div class="cv-tag" style="background:${catColors[cv.cat]}22;color:${catColors[cv.cat]};display:inline-block;margin-bottom:8px">${cv.cat}</div>
-        <h2 style="font-size:20px;font-weight:800;letter-spacing:-.5px">${cv.title}</h2>
-        <p style="font-size:13px;color:#666;margin-top:4px">Expérience chez ${cv.company} · ${cv.school} · ${cv.level}</p>
+        <div class="cv-tag" style="background:${catBg[cv.cat]};color:${catColors[cv.cat]};display:inline-block;margin-bottom:8px">${cv.cat}</div>
+        <h2 style="font-size:20px;font-weight:800;letter-spacing:-.5px;color:#111">${cv.title}</h2>
+        <p style="font-size:13px;color:#999;margin-top:4px">${cv.company} · ${cv.school} · ${cv.level}</p>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
       <div class="modal-cv-text">${cv.cv}</div>
       <div class="modal-actions">
-        <button class="btn-modal-primary" onclick="useTemplate(${cv.id})">Optimiser ce CV avec l'IA →</button>
-        <button class="btn-modal-secondary" onclick="copyTemplate(${cv.id})">📋 Copier</button>
+        <button class="btn-modal-primary" onclick="useTemplate(${cv.id})">${useLabel}</button>
+        <button class="btn-modal-secondary" onclick="copyTemplate(${cv.id})">${copyLabel}</button>
       </div>
     </div>`;
   document.getElementById('cvModal').classList.add('show');
 }
 
-function closeModal() { document.getElementById('cvModal').classList.remove('show'); }
+function closeModal(){document.getElementById('cvModal').classList.remove('show');}
 
-function useTemplate(id) {
-  const cv = CV_EXAMPLES.find(c => c.id === id);
-  if (!cv) return;
-  localStorage.setItem('cvboost_template', cv.cv);
-  window.location.href = '/?template=' + id;
+function useTemplate(id){
+  const cv=CV_EXAMPLES.find(c=>c.id===id);
+  if(!cv)return;
+  localStorage.setItem('cvboost_template',cv.cv);
+  window.location.href='/?template='+id;
 }
 
-function copyTemplate(id) {
-  const cv = CV_EXAMPLES.find(c => c.id === id);
-  if (!cv) return;
+function copyTemplate(id){
+  const cv=CV_EXAMPLES.find(c=>c.id===id);
+  if(!cv)return;
   navigator.clipboard.writeText(cv.cv);
   alert('CV copié ! Colle-le dans CVBoost pour l\'optimiser.');
 }
 
-document.getElementById('cvModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
+document.getElementById('cvModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
 });
 
 renderCards();
 
-// Handle template param
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('template')) {
-  const template = localStorage.getItem('cvboost_template');
-  if (template) {
-    const cvInput = document.getElementById('cvInput');
-    if (cvInput) { cvInput.value = template; localStorage.removeItem('cvboost_template'); }
+const urlParams=new URLSearchParams(window.location.search);
+if(urlParams.get('template')){
+  const template=localStorage.getItem('cvboost_template');
+  if(template){
+    const cvInput=document.getElementById('cvInput');
+    if(cvInput){cvInput.value=template;localStorage.removeItem('cvboost_template');}
   }
 }
 </script>

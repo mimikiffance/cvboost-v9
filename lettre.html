@@ -4,83 +4,123 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CVBoost — Générateur de lettre de motivation IA</title>
+<meta name="description" content="Génère une lettre de motivation professionnelle en 30 secondes grâce à l'IA. Ciblée sur l'offre, personnalisée sur ton profil. Essai gratuit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0e0e10;color:#f0f0ee;line-height:1.6;min-height:100vh}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,16,0.92);backdrop-filter:blur(12px);border-bottom:1px solid #222;padding:0 5%}
-.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:900;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#f0f0ee}
-.logo span{color:#5B4FE8}
-.nav-links{display:flex;align-items:center;gap:16px}
-.nav-links a{font-size:14px;color:#888;text-decoration:none;font-weight:500}
-.nav-links a:hover{color:#f0f0ee}
-.btn-nav{background:#5B4FE8;color:#fff;padding:8px 18px;border-radius:8px;font-weight:600;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+body{font-family:'Inter',sans-serif;background:#ffffff;color:#111111;line-height:1.6;min-height:100vh}
 
-.hero{padding:120px 5% 40px;max-width:900px;margin:0 auto;text-align:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:24px}
-h1{font-size:clamp(32px,5vw,56px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:16px}
-.accent{color:#5B4FE8}
-.hero-sub{font-size:16px;color:#888;max-width:480px;margin:0 auto 48px;line-height:1.7}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#ffffff;border-bottom:1px solid #eeeeee;padding:0 5%}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#111}
+.logo span{color:#F5A623}
+.nav-links{display:flex;align-items:center;gap:20px}
+.nav-links a{font-size:14px;color:#777;text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#111}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang-switcher{display:flex;align-items:center;gap:2px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:8px;padding:3px}
+.lang-btn{background:none;border:none;font-size:11px;font-weight:700;color:#888;cursor:pointer;font-family:'Inter',sans-serif;padding:4px 8px;border-radius:5px;transition:all .2s;letter-spacing:.5px}
+.lang-btn.active{background:#F5A623;color:#111}
+.lang-btn:hover:not(.active){color:#111}
+.btn-nav{background:#F5A623;color:#111;padding:8px 18px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;transition:background .2s}
+.btn-nav:hover{background:#d4890f}
 
-.counter-bar{background:#1a1a2e;border:1px solid #2d2d5e;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;max-width:900px;margin-left:auto;margin-right:auto}
+/* HERO */
+.hero{padding:104px 5% 48px;max-width:900px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff8ee;border:1px solid #fde5b0;color:#c47d00;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:24px}
+.hero-badge-dot{width:6px;height:6px;background:#F5A623;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+h1{font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:14px;color:#111}
+.accent{color:#F5A623}
+.hero-sub{font-size:16px;color:#666;max-width:520px;margin:0 auto 32px;line-height:1.75}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:26px;font-weight:900;letter-spacing:-1px;color:#111}
+.hero-stat-lbl{font-size:12px;color:#999;margin-top:2px}
+
+/* COUNTER */
+.counter-wrap{max-width:900px;margin:0 auto;padding:0 5% 24px}
+.counter-bar{background:#fff8ee;border:1px solid #fde5b0;border-radius:10px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between}
 .counter-bar span{font-size:13px;color:#888}
-.counter-bar strong{color:#a69af5}
+.counter-bar strong{color:#F5A623;font-weight:700}
 
+/* APP */
 .app{max-width:900px;margin:0 auto;padding:0 5% 80px}
-.card{background:#141416;border:1px solid #222;border-radius:20px;padding:36px;margin-bottom:20px}
-.card-title{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555;margin-bottom:16px;display:flex;align-items:center;gap:10px}
-.card-title::after{content:'';flex:1;height:1px;background:#1e1e1e}
-textarea{width:100%;background:#0e0e10;border:1px solid #2a2a2a;border-radius:12px;padding:16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;resize:vertical;transition:border .2s;outline:none}
-textarea:focus{border-color:#5B4FE8}
-textarea::placeholder{color:#444}
-.input-hint{font-size:12px;color:#555;margin-top:8px}
-.optional-badge{display:inline-block;background:#1a1a1a;color:#555;font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
-.btn-primary{background:#5B4FE8;color:#fff;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .2s;width:100%;margin-top:20px;font-family:'Inter',sans-serif}
-.btn-primary:hover{background:#4a3fd4;transform:translateY(-1px)}
-.btn-primary:disabled{background:#2a2a2a;color:#555;cursor:not-allowed;transform:none}
-
-.loading{display:none;text-align:center;padding:60px 20px}
-.loading.show{display:block}
-.spinner{width:44px;height:44px;border:3px solid #222;border-top-color:#5B4FE8;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:15px;color:#888;font-weight:500}
-.loading-sub{font-size:13px;color:#555;margin-top:8px}
-
-.result{display:none}
-.result.show{display:block}
-.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px}
-.result-header h2{font-size:18px;font-weight:800;letter-spacing:-.5px}
-.ldm-text{background:#0e0e10;border:1px solid #1e1e1e;border-radius:16px;padding:28px;white-space:pre-wrap;font-size:14px;line-height:1.9;color:#ccc;font-family:'Inter',sans-serif;max-height:600px;overflow-y:auto}
-.ldm-text::-webkit-scrollbar{width:4px}
-.ldm-text::-webkit-scrollbar-thumb{background:#333;border-radius:2px}
-.actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
-.btn-copy{background:#1a1a1a;border:1px solid #2a2a2a;color:#888;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:8px}
-.btn-copy:hover{border-color:#5B4FE8;color:#5B4FE8}
-.btn-copy.copied{border-color:#2ecc9a;color:#2ecc9a}
-.btn-new{background:transparent;border:1px solid #333;color:#f0f0ee;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.btn-new:hover{border-color:#5B4FE8;color:#5B4FE8}
-
-.paywall{display:none;background:#141416;border:1px solid #2d2d5e;border-radius:20px;padding:48px;text-align:center}
-.paywall.show{display:block}
-.paywall h3{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:12px}
-.paywall p{color:#888;font-size:15px;margin-bottom:32px}
-.paywall-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-stripe{padding:13px 28px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;border:none;text-decoration:none;display:inline-block}
-.btn-boost{background:#5B4FE8;color:#fff}
-.btn-pro{background:transparent;border:1px solid #333;color:#f0f0ee}
 
 /* TIPS */
-.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
-.tip{background:#141416;border:1px solid #222;border-radius:12px;padding:16px}
-.tip-icon{font-size:20px;margin-bottom:8px}
-.tip-title{font-size:13px;font-weight:700;color:#f0f0ee;margin-bottom:4px}
-.tip-text{font-size:12px;color:#666;line-height:1.6}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.tip{background:#ffffff;border:1px solid #eeeeee;border-radius:14px;padding:20px;transition:border-color .2s}
+.tip:hover{border-color:#fde5b0}
+.tip-icon{font-size:22px;margin-bottom:10px}
+.tip-title{font-size:14px;font-weight:700;color:#111;margin-bottom:4px}
+.tip-text{font-size:13px;color:#777;line-height:1.6}
 
-@media(max-width:600px){.tips{grid-template-columns:1fr}.actions{flex-direction:column}}
+/* CARDS */
+.card{background:#ffffff;border:1px solid #eeeeee;border-radius:20px;padding:32px;margin-bottom:16px}
+.card-title{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.card-title::after{content:'';flex:1;height:1px;background:#eeeeee}
+.badge-required{display:inline-block;background:#fff0f0;color:#e74c5b;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+.badge-optional{display:inline-block;background:#f5f5f5;color:#999;font-size:10px;font-weight:700;padding:2px 8px;border-radius:5px;letter-spacing:.5px;margin-left:8px;vertical-align:middle}
+textarea{width:100%;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:12px;padding:16px;color:#111;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;resize:vertical;transition:border .2s;outline:none}
+textarea:focus{border-color:#F5A623;background:#fff}
+textarea::placeholder{color:#bbb}
+.input-hint{font-size:12px;color:#aaa;margin-top:8px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-label{font-size:12px;color:#888;display:block;margin-bottom:8px;font-weight:600}
+.form-input{width:100%;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;padding:12px 16px;color:#111;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border .2s}
+.form-input:focus{border-color:#F5A623;background:#fff}
+.form-input::placeholder{color:#bbb}
+.btn-primary{background:#F5A623;color:#111;padding:15px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .2s;width:100%;margin-top:20px;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:#d4890f;transform:translateY(-1px)}
+.btn-primary:disabled{background:#eeeeee;color:#aaa;cursor:not-allowed;transform:none}
+
+/* LOADING */
+.loading{display:none;text-align:center;padding:80px 20px}
+.loading.show{display:block}
+.spinner{width:48px;height:48px;border:3px solid #eeeeee;border-top-color:#F5A623;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-size:16px;color:#555;font-weight:600}
+.loading-sub{font-size:13px;color:#aaa;margin-top:8px}
+
+/* RESULT */
+.result{display:none}
+.result.show{display:block}
+.result-top{background:#f0fff8;border:1px solid #b8f0d9;border-radius:14px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.result-top-left{display:flex;align-items:center;gap:12px}
+.result-check{width:36px;height:36px;background:#2ecc9a;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;flex-shrink:0}
+.result-top-title{font-size:16px;font-weight:800;color:#111;letter-spacing:-.3px}
+.result-top-sub{font-size:13px;color:#666;margin-top:2px}
+.ldm-text{background:#fafafa;border:1px solid #eeeeee;border-radius:14px;padding:28px;white-space:pre-wrap;font-size:14px;line-height:1.9;color:#333;font-family:'Inter',sans-serif;max-height:600px;overflow-y:auto}
+.ldm-text::-webkit-scrollbar{width:4px}
+.ldm-text::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn-copy{background:#f5f5f5;border:1px solid #e0e0e0;color:#555;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;display:flex;align-items:center;gap:8px}
+.btn-copy:hover{border-color:#F5A623;color:#111}
+.btn-copy.copied{border-color:#2ecc9a;color:#2ecc9a}
+.btn-new{background:transparent;border:1px solid #e0e0e0;color:#555;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.btn-new:hover{border-color:#111;color:#111}
+
+/* PAYWALL */
+.paywall{display:none;background:#ffffff;border:1px solid #fde5b0;border-radius:20px;padding:48px;text-align:center}
+.paywall.show{display:block}
+.paywall h3{font-size:22px;font-weight:900;letter-spacing:-1px;margin-bottom:10px;color:#111}
+.paywall p{color:#777;font-size:15px;margin-bottom:28px;line-height:1.7}
+.paywall-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-boost{padding:13px 28px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;border:none;text-decoration:none;display:inline-block;background:#F5A623;color:#111;transition:background .2s}
+.btn-boost:hover{background:#d4890f}
+.btn-pro{padding:13px 28px;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;display:inline-block;background:#111;color:#fff;transition:background .2s}
+.btn-pro:hover{background:#333}
+
+/* FOOTER */
+footer{background:#111111;border-top:1px solid #222;padding:32px 5%;text-align:center}
+footer p{font-size:13px;color:#555}
+footer a{color:#F5A623;text-decoration:none}
+
+@media(max-width:600px){.tips{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.actions{flex-direction:column}.hero-stats{gap:20px}}
 </style>
 </head>
 <body>
@@ -89,22 +129,34 @@ textarea::placeholder{color:#444}
   <div class="nav-inner">
     <a href="/" class="logo">CV<span>Boost</span></a>
     <div class="nav-links">
-      <a href="/">Optimiser mon CV</a>
-      <a href="/examples.html">Exemples</a>
-      <button class="btn-nav" onclick="window.location.href='https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06'">Pro — 14,90€/mois</button>
+      <a href="/" data-i18n="nav.optimise">Optimiser mon CV</a>
+      <a href="/examples.html" data-i18n="nav.examples">Exemples</a>
+    </div>
+    <div class="nav-right">
+      <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" onclick="setLang('es')">ES</button>
+      </div>
+      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-nav" data-i18n="nav.pro">Pro — 14,90€/mois</a>
     </div>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">✉️ Lettre de motivation IA</div>
-  <h1>Ta lettre de motivation<br><span class="accent">en 30 secondes</span></h1>
-  <p class="hero-sub">Colle l'offre d'emploi et ton profil (optionnel). L'IA génère une lettre professionnelle et personnalisée.</p>
+  <div class="hero-badge"><div class="hero-badge-dot"></div> <span data-i18n="hero.badge">✉️ Lettre de motivation IA</span></div>
+  <h1 data-i18n="hero.h1">Ta lettre de motivation<br><span class="accent">en 30 secondes</span></h1>
+  <p class="hero-sub" data-i18n="hero.sub">Colle l'offre d'emploi et ton profil. L'IA génère une lettre professionnelle, personnalisée et ciblée sur chaque candidature.</p>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">30s</div><div class="hero-stat-lbl" data-i18n="hero.stat1">Génération</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-lbl" data-i18n="hero.stat2">Personnalisée</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">5★</div><div class="hero-stat-lbl" data-i18n="hero.stat3">Qualité pro</div></div>
+  </div>
 </div>
 
-<div style="max-width:900px;margin:0 auto;padding:0 5%">
+<div class="counter-wrap">
   <div class="counter-bar">
-    <span>Lettres de motivation restantes</span>
+    <span data-i18n="counter.label">Lettres de motivation restantes</span>
     <strong id="ldmCount">1 / 1</strong>
   </div>
 </div>
@@ -115,26 +167,26 @@ textarea::placeholder{color:#444}
   <div class="tips">
     <div class="tip">
       <div class="tip-icon">🎯</div>
-      <div class="tip-title">Ciblée par offre</div>
-      <div class="tip-text">La lettre s'adapte exactement aux mots-clés et attentes de l'offre.</div>
+      <div class="tip-title" data-i18n="tip1.title">Ciblée par offre</div>
+      <div class="tip-text" data-i18n="tip1.text">La lettre s'adapte exactement aux mots-clés et attentes de l'offre.</div>
     </div>
     <div class="tip">
       <div class="tip-icon">✍️</div>
-      <div class="tip-title">Ton professionnel</div>
-      <div class="tip-text">Chaleureux, motivant et adapté au marché français.</div>
+      <div class="tip-title" data-i18n="tip2.title">Ton professionnel</div>
+      <div class="tip-text" data-i18n="tip2.text">Chaleureux, motivant et adapté au marché de l'emploi.</div>
     </div>
     <div class="tip">
       <div class="tip-icon">⚡</div>
-      <div class="tip-title">30 secondes</div>
-      <div class="tip-text">Plus besoin de passer des heures sur ta lettre de motivation.</div>
+      <div class="tip-title" data-i18n="tip3.title">30 secondes</div>
+      <div class="tip-text" data-i18n="tip3.text">Plus besoin de passer des heures sur ta lettre de motivation.</div>
     </div>
   </div>
 
   <!-- FORM -->
   <div id="formSection">
     <div class="card">
-      <div class="card-title">L'offre d'emploi <span style="color:#e74c5b;font-size:10px;vertical-align:middle">OBLIGATOIRE</span></div>
-      <textarea id="jobInput" rows="8" placeholder="Colle ici le texte complet de l'offre d'emploi...
+      <div class="card-title" data-i18n="form.job">L'offre d'emploi <span class="badge-required" data-i18n="form.required">OBLIGATOIRE</span></div>
+      <textarea id="jobInput" rows="8" data-i18n-placeholder="form.jobPh" placeholder="Colle ici le texte complet de l'offre d'emploi...
 
 Exemple :
 Alternance — Analyste en Gestion d'Actifs
@@ -145,123 +197,246 @@ Missions :
 
 Profil recherché :
 - Étudiant en école de commerce M1/M2..."></textarea>
-      <div class="input-hint">Plus l'offre est complète, plus la lettre sera précise et ciblée.</div>
+      <div class="input-hint" data-i18n="form.jobHint">Plus l'offre est complète, plus la lettre sera précise et ciblée.</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Ton profil <span class="optional-badge">OPTIONNEL</span></div>
-      <textarea id="profileInput" rows="6" placeholder="Décris ton profil ou colle ton CV (optionnel)...
+      <div class="card-title" data-i18n="form.profile">Ton profil <span class="badge-optional" data-i18n="form.optional">OPTIONNEL</span></div>
+      <textarea id="profileInput" rows="5" data-i18n-placeholder="form.profilePh" placeholder="Décris ton profil ou colle ton CV (optionnel)...
 
 Exemple :
 Étudiant en M1 Finance à KEDGE Business School
 Stage chez BNP Paribas (6 mois) — analyse financière
-Maîtrise Excel, Bloomberg, anglais courant
-Passionné par les marchés financiers..."></textarea>
-      <div class="input-hint">Sans profil, la lettre sera générique mais toujours ciblée sur l'offre.</div>
+Maîtrise Excel, Bloomberg, anglais courant..."></textarea>
+      <div class="input-hint" data-i18n="form.profileHint">Sans profil, la lettre sera générique mais toujours ciblée sur l'offre.</div>
     </div>
 
     <div class="card">
-      <div class="card-title">Tes coordonnées <span class="optional-badge">OPTIONNEL</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="card-title" data-i18n="form.coords">Tes coordonnées <span class="badge-optional" data-i18n="form.optional2">OPTIONNEL</span></div>
+      <div class="form-row">
         <div>
-          <label style="font-size:12px;color:#666;display:block;margin-bottom:8px">Prénom Nom</label>
-          <input type="text" id="nameInput" placeholder="Milann Rua" style="width:100%;background:#0e0e10;border:1px solid #2a2a2a;border-radius:10px;padding:12px 16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;outline:none">
+          <label class="form-label" data-i18n="form.name">Prénom Nom</label>
+          <input type="text" id="nameInput" class="form-input" data-i18n-placeholder="form.namePh" placeholder="Milann Rua">
         </div>
         <div>
-          <label style="font-size:12px;color:#666;display:block;margin-bottom:8px">Ville</label>
-          <input type="text" id="cityInput" placeholder="Paris" style="width:100%;background:#0e0e10;border:1px solid #2a2a2a;border-radius:10px;padding:12px 16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;outline:none">
+          <label class="form-label" data-i18n="form.city">Ville</label>
+          <input type="text" id="cityInput" class="form-input" data-i18n-placeholder="form.cityPh" placeholder="Paris">
         </div>
       </div>
     </div>
 
-    <button class="btn-primary" onclick="generateLDM()">Générer ma lettre de motivation →</button>
+    <button class="btn-primary" onclick="generateLDM()" data-i18n="form.btn">Générer ma lettre de motivation →</button>
   </div>
 
   <!-- LOADING -->
   <div class="loading" id="loading">
     <div class="spinner"></div>
-    <div class="loading-text">Rédaction de ta lettre en cours...</div>
-    <div class="loading-sub">L'IA analyse l'offre et rédige une lettre personnalisée</div>
+    <div class="loading-text" data-i18n="loading.text">Rédaction de ta lettre en cours...</div>
+    <div class="loading-sub" data-i18n="loading.sub">L'IA analyse l'offre et rédige une lettre personnalisée</div>
   </div>
 
   <!-- RESULT -->
   <div class="result" id="result">
-    <div class="card">
-      <div class="result-header">
-        <h2>✉️ Ta lettre de motivation</h2>
-        <div class="actions">
-          <button class="btn-copy" id="copyBtn" onclick="copyLDM()">📋 Copier</button>
-          <button class="btn-new" onclick="resetForm()">← Nouvelle lettre</button>
+    <div class="result-top">
+      <div class="result-top-left">
+        <div class="result-check">✓</div>
+        <div>
+          <div class="result-top-title" data-i18n="result.title">Ta lettre est prête !</div>
+          <div class="result-top-sub" data-i18n="result.sub">Relis, personnalise si besoin, puis envoie.</div>
         </div>
       </div>
-      <div class="ldm-text" id="ldmText"></div>
+      <div class="actions">
+        <button class="btn-copy" id="copyBtn" onclick="copyLDM()" data-i18n="result.copy">📋 Copier</button>
+        <button class="btn-new" onclick="resetForm()" data-i18n="result.new">← Nouvelle lettre</button>
+      </div>
     </div>
+    <div class="ldm-text" id="ldmText"></div>
   </div>
 
   <!-- PAYWALL -->
   <div class="paywall" id="paywall">
     <div style="font-size:40px;margin-bottom:16px">🔒</div>
-    <h3>Plus de lettres disponibles</h3>
-    <p>Tu as utilisé ta lettre gratuite. Passe au Boost ou au Pro pour continuer.</p>
+    <h3 data-i18n="paywall.title">Plus de lettres disponibles</h3>
+    <p data-i18n="paywall.sub">Tu as utilisé ta lettre gratuite. Passe au Boost ou au Pro pour continuer.</p>
     <div class="paywall-btns">
-      <a href="https://buy.stripe.com/4gM4gyaowcts8Z948Y2go05" class="btn-stripe btn-boost">Boost — 2,99€ (5 lettres)</a>
-      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-stripe btn-pro">Pro — 14,90€/mois (illimité)</a>
+      <a href="https://buy.stripe.com/4gM4gyaowcts8Z948Y2go05" class="btn-boost" data-i18n="paywall.boost">Boost — 2,99€ (5 lettres)</a>
+      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-pro" data-i18n="paywall.pro">Pro — 14,90€/mois (illimité)</a>
     </div>
   </div>
 
 </div>
 
-<footer style="border-top:1px solid #1a1a1a;padding:32px 5%;text-align:center">
-  <p style="font-size:12px;color:#444">© 2026 CVBoost — <a href="/" style="color:#5B4FE8;text-decoration:none">Retour à l'accueil</a></p>
+<footer>
+  <p>© 2026 CVBoost — <a href="/" data-i18n="footer.back">Retour à l'accueil</a></p>
 </footer>
+
+<script>
+/* ─── i18n ─── */
+const T={
+  fr:{
+    'nav.optimise':'Optimiser mon CV','nav.examples':'Exemples','nav.pro':'Pro — 14,90€/mois',
+    'hero.badge':'✉️ Lettre de motivation IA',
+    'hero.h1':'Ta lettre de motivation<br><span class="accent">en 30 secondes</span>',
+    'hero.sub':'Colle l\'offre d\'emploi et ton profil. L\'IA génère une lettre professionnelle, personnalisée et ciblée sur chaque candidature.',
+    'hero.stat1':'Génération','hero.stat2':'Personnalisée','hero.stat3':'Qualité pro',
+    'counter.label':'Lettres de motivation restantes',
+    'tip1.title':'Ciblée par offre','tip1.text':'La lettre s\'adapte exactement aux mots-clés et attentes de l\'offre.',
+    'tip2.title':'Ton professionnel','tip2.text':'Chaleureux, motivant et adapté au marché de l\'emploi.',
+    'tip3.title':'30 secondes','tip3.text':'Plus besoin de passer des heures sur ta lettre de motivation.',
+    'form.job':'L\'offre d\'emploi','form.required':'OBLIGATOIRE',
+    'form.jobPh':'Colle ici le texte complet de l\'offre d\'emploi...',
+    'form.jobHint':'Plus l\'offre est complète, plus la lettre sera précise et ciblée.',
+    'form.profile':'Ton profil','form.optional':'OPTIONNEL','form.optional2':'OPTIONNEL',
+    'form.profilePh':'Décris ton profil ou colle ton CV (optionnel)...',
+    'form.profileHint':'Sans profil, la lettre sera générique mais toujours ciblée sur l\'offre.',
+    'form.coords':'Tes coordonnées',
+    'form.name':'Prénom Nom','form.namePh':'Milann Rua','form.city':'Ville','form.cityPh':'Paris',
+    'form.btn':'Générer ma lettre de motivation →',
+    'loading.text':'Rédaction de ta lettre en cours...','loading.sub':'L\'IA analyse l\'offre et rédige une lettre personnalisée',
+    'result.title':'Ta lettre est prête !','result.sub':'Relis, personnalise si besoin, puis envoie.',
+    'result.copy':'📋 Copier','result.new':'← Nouvelle lettre',
+    'paywall.title':'Plus de lettres disponibles',
+    'paywall.sub':'Tu as utilisé ta lettre gratuite. Passe au Boost ou au Pro pour continuer.',
+    'paywall.boost':'Boost — 2,99€ (5 lettres)','paywall.pro':'Pro — 14,90€/mois (illimité)',
+    'footer.back':'Retour à l\'accueil'
+  },
+  en:{
+    'nav.optimise':'Optimize my resume','nav.examples':'Examples','nav.pro':'Pro — €14.90/mo',
+    'hero.badge':'✉️ AI Cover Letter Generator',
+    'hero.h1':'Your cover letter<br><span class="accent">in 30 seconds</span>',
+    'hero.sub':'Paste the job listing and your profile. AI generates a professional, personalized cover letter for each application.',
+    'hero.stat1':'Generation','hero.stat2':'Personalized','hero.stat3':'Pro quality',
+    'counter.label':'Cover letters remaining',
+    'tip1.title':'Targeted per listing','tip1.text':'The letter adapts exactly to the keywords and expectations of the job posting.',
+    'tip2.title':'Professional tone','tip2.text':'Warm, motivating and adapted to the job market.',
+    'tip3.title':'30 seconds','tip3.text':'No more spending hours on your cover letter.',
+    'form.job':'The job listing','form.required':'REQUIRED',
+    'form.jobPh':'Paste the full job listing text here...',
+    'form.jobHint':'The more complete the listing, the more precise and targeted the letter.',
+    'form.profile':'Your profile','form.optional':'OPTIONAL','form.optional2':'OPTIONAL',
+    'form.profilePh':'Describe your profile or paste your resume (optional)...',
+    'form.profileHint':'Without a profile, the letter will be generic but still targeted to the listing.',
+    'form.coords':'Your details',
+    'form.name':'First Last name','form.namePh':'John Doe','form.city':'City','form.cityPh':'London',
+    'form.btn':'Generate my cover letter →',
+    'loading.text':'Writing your letter...','loading.sub':'AI is analyzing the listing and writing a personalized letter',
+    'result.title':'Your letter is ready!','result.sub':'Review, personalize if needed, then send.',
+    'result.copy':'📋 Copy','result.new':'← New letter',
+    'paywall.title':'No more letters available',
+    'paywall.sub':'You\'ve used your free letter. Upgrade to Boost or Pro to continue.',
+    'paywall.boost':'Boost — €2.99 (5 letters)','paywall.pro':'Pro — €14.90/mo (unlimited)',
+    'footer.back':'Back to home'
+  },
+  es:{
+    'nav.optimise':'Optimizar mi CV','nav.examples':'Ejemplos','nav.pro':'Pro — 14,90€/mes',
+    'hero.badge':'✉️ Carta de presentación IA',
+    'hero.h1':'Tu carta de presentación<br><span class="accent">en 30 segundos</span>',
+    'hero.sub':'Pega la oferta de trabajo y tu perfil. La IA genera una carta profesional, personalizada y dirigida a cada candidatura.',
+    'hero.stat1':'Generación','hero.stat2':'Personalizada','hero.stat3':'Calidad pro',
+    'counter.label':'Cartas restantes',
+    'tip1.title':'Dirigida a la oferta','tip1.text':'La carta se adapta exactamente a las palabras clave y expectativas de la oferta.',
+    'tip2.title':'Tono profesional','tip2.text':'Cálido, motivador y adaptado al mercado laboral.',
+    'tip3.title':'30 segundos','tip3.text':'Sin necesidad de pasar horas en tu carta de presentación.',
+    'form.job':'La oferta de trabajo','form.required':'OBLIGATORIO',
+    'form.jobPh':'Pega aquí el texto completo de la oferta de trabajo...',
+    'form.jobHint':'Cuanto más completa sea la oferta, más precisa y dirigida será la carta.',
+    'form.profile':'Tu perfil','form.optional':'OPCIONAL','form.optional2':'OPCIONAL',
+    'form.profilePh':'Describe tu perfil o pega tu CV (opcional)...',
+    'form.profileHint':'Sin perfil, la carta será genérica pero siempre dirigida a la oferta.',
+    'form.coords':'Tus datos',
+    'form.name':'Nombre Apellido','form.namePh':'Juan García','form.city':'Ciudad','form.cityPh':'Madrid',
+    'form.btn':'Generar mi carta de presentación →',
+    'loading.text':'Redactando tu carta...','loading.sub':'La IA analiza la oferta y redacta una carta personalizada',
+    'result.title':'¡Tu carta está lista!','result.sub':'Revisa, personaliza si es necesario, y envía.',
+    'result.copy':'📋 Copiar','result.new':'← Nueva carta',
+    'paywall.title':'Sin más cartas disponibles',
+    'paywall.sub':'Has usado tu carta gratuita. Pasa al Boost o Pro para continuar.',
+    'paywall.boost':'Boost — 2,99€ (5 cartas)','paywall.pro':'Pro — 14,90€/mes (ilimitado)',
+    'footer.back':'Volver al inicio'
+  }
+};
+
+let currentLang='fr';
+function setLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][k])el.innerHTML=T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-placeholder');
+    if(T[lang]&&T[lang][k])el.placeholder=T[lang][k];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+}
+</script>
 
 <script>
 const SUPABASE_URL='https://aunoabtcgtnglrhcvaax.supabase.co';
 const SUPABASE_KEY='sb_publishable_XNyuhby2B8CYEZDnjVedIQ_G_9XnZLu';
 const {createClient}=supabase;
 const sb=createClient(SUPABASE_URL,SUPABASE_KEY);
-const LDM_FREE=1, LDM_BOOST=5;
-let currentUser=null;
-let ldmResult='';
-
-async function init(){
-  const {data:{session}}=await sb.auth.getSession();
-  currentUser=session?.user||null;
-  updateCounter();
-}
+const LDM_FREE=1,LDM_BOOST=5;
+let currentUser=null,userProfile=null,ldmResult='';
 
 function isAdmin(){return currentUser&&currentUser.email==='milann.rua2@gmail.com';}
 
-function getUsed(){
-  if(isAdmin())return 0;
-  const uid=currentUser?currentUser.id:'anon';
-  return parseInt(localStorage.getItem('cvboost_ldm_'+uid)||'0');
+async function loadProfile(){
+  if(!currentUser){userProfile=null;updateCounter();return;}
+  const{data}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+  if(!data){
+    await sb.from('profiles').upsert({id:currentUser.id,email:currentUser.email,plan:'free',cv_used:0,ldm_used:0},{onConflict:'id'});
+    const{data:np}=await sb.from('profiles').select('*').eq('id',currentUser.id).single();
+    userProfile=np;
+  }else{userProfile=data;}
+  updateCounter();
 }
 
-function setUsed(val){
-  if(isAdmin())return;
-  const uid=currentUser?currentUser.id:'anon';
-  localStorage.setItem('cvboost_ldm_'+uid,val);
+function getLimit(){
+  if(isAdmin())return Infinity;
+  const plan=userProfile?.plan||'free';
+  if(plan==='pro')return Infinity;
+  if(plan==='boost')return LDM_FREE+LDM_BOOST;
+  return LDM_FREE;
+}
+
+function getUsedAnon(){
+  return parseInt(localStorage.getItem('cvboost_ldm_anon')||'0');
 }
 
 function hasCredits(){
   if(isAdmin())return true;
-  const used=getUsed();
-  const limit=used<LDM_FREE?LDM_FREE:LDM_FREE+LDM_BOOST;
-  return used<limit;
+  if(currentUser){
+    const used=userProfile?.ldm_used||0;
+    return used<getLimit();
+  }
+  return getUsedAnon()<LDM_FREE;
 }
 
 function updateCounter(){
-  const used=getUsed();
-  const limit=isAdmin()?'∞':(used<LDM_FREE?LDM_FREE:LDM_FREE+LDM_BOOST);
-  const rem=isAdmin()?'∞':Math.max(0,(typeof limit==='number'?limit:0)-used);
-  document.getElementById('ldmCount').textContent=rem+' / '+limit;
-  document.getElementById('ldmCount').style.color=(!isAdmin()&&rem==0)?'#e74c5b':'#a69af5';
+  let rem,limit;
+  if(isAdmin()){rem='∞';limit='∞';}
+  else if(currentUser){
+    limit=getLimit();
+    const used=userProfile?.ldm_used||0;
+    rem=limit===Infinity?'∞':Math.max(0,limit-used);
+    limit=limit===Infinity?'∞':limit;
+  }else{
+    const used=getUsedAnon();
+    rem=Math.max(0,LDM_FREE-used);
+    limit=LDM_FREE;
+  }
+  const el=document.getElementById('ldmCount');
+  el.textContent=rem+' / '+limit;
+  el.style.color=(rem===0)?'#e74c5b':'#F5A623';
 }
 
 async function generateLDM(){
   const job=document.getElementById('jobInput').value.trim();
-  if(job.length<30){alert("Merci de coller l'offre d'emploi (au moins quelques lignes).");return;}
+  if(job.length<30){alert('Merci de coller l\'offre d\'emploi (au moins quelques lignes).');return;}
 
   if(!hasCredits()){
     document.getElementById('formSection').style.display='none';
@@ -276,27 +451,28 @@ async function generateLDM(){
   const name=document.getElementById('nameInput').value.trim();
   const city=document.getElementById('cityInput').value.trim();
 
+  const{data:{session}}=await sb.auth.getSession();
+  const token=session?.access_token||'';
+
   try{
-    const response=await fetch('/api/optimize',{
+    const res=await fetch('/api/optimize',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        cv: profile || 'Profil non renseigné — génère une lettre générique mais ciblée sur l\'offre.',
-        job,
-        mode:'ldm',
-        name,
-        city
+        cv:profile||'Profil non renseigné — génère une lettre générique mais ciblée sur l\'offre.',
+        job,mode:'ldm',name,city,token
       })
     });
-
-    const data=await response.json();
-    if(!response.ok)throw new Error(data.error||'Erreur serveur');
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error||'Erreur serveur');
 
     ldmResult=data.lettre_motivation||'Erreur lors de la génération.';
-    setUsed(getUsed()+1);
-    updateCounter();
-    showResult();
 
+    if(!currentUser){
+      localStorage.setItem('cvboost_ldm_anon',getUsedAnon()+1);
+    }
+    await loadProfile();
+    showResult();
   }catch(err){
     document.getElementById('loading').classList.remove('show');
     document.getElementById('formSection').style.display='block';
@@ -308,6 +484,7 @@ function showResult(){
   document.getElementById('loading').classList.remove('show');
   document.getElementById('result').classList.add('show');
   document.getElementById('ldmText').textContent=ldmResult;
+  window.scrollTo({top:document.getElementById('result').offsetTop-80,behavior:'smooth'});
 }
 
 function copyLDM(){
@@ -315,7 +492,7 @@ function copyLDM(){
   const btn=document.getElementById('copyBtn');
   btn.textContent='✓ Copié !';
   btn.classList.add('copied');
-  setTimeout(()=>{btn.textContent='📋 Copier';btn.classList.remove('copied');},2000);
+  setTimeout(()=>{btn.innerHTML='📋 '+T[currentLang]['result.copy'].replace('📋 ','');btn.classList.remove('copied');},2000);
 }
 
 function resetForm(){
@@ -327,6 +504,11 @@ function resetForm(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+async function init(){
+  const{data:{session}}=await sb.auth.getSession();
+  currentUser=session?.user||null;
+  await loadProfile();
+}
 init();
 </script>
 </body>
