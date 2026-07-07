@@ -11,320 +11,325 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#0e0e10;color:#f0f0ee;line-height:1.6;min-height:100vh}
+body{font-family:'Inter',sans-serif;background:#ffffff;color:#111111;line-height:1.6;min-height:100vh}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,16,0.95);backdrop-filter:blur(12px);border-bottom:1px solid #1e1e1e;padding:0 5%}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#ffffff;backdrop-filter:blur(12px);border-bottom:1px solid #eeeeee;padding:0 5%}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
-.logo{font-weight:900;font-size:22px;letter-spacing:-1px;cursor:pointer;color:#f0f0ee;text-decoration:none}
-.logo span{color:#5B4FE8}
+.logo{font-weight:900;font-size:22px;letter-spacing:-1px;cursor:pointer;color:#111111;text-decoration:none}
+.logo span{color:#F5A623}
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:14px;color:#777;text-decoration:none;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:#f0f0ee}
+.nav-links a:hover{color:#111111}
 .nav-actions{display:flex;align-items:center;gap:12px}
-.btn-ghost-nav{font-size:14px;color:#888;background:none;border:1px solid #2a2a2a;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:all .2s;text-decoration:none}
-.btn-ghost-nav:hover{border-color:#5B4FE8;color:#f0f0ee}
-.btn-cta-nav{background:#5B4FE8;color:#fff;padding:9px 20px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;text-decoration:none}
-.btn-cta-nav:hover{background:#4a3fd4}
-.user-email-nav{font-size:12px;color:#555;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-ghost-nav{font-size:14px;color:#555;background:none;border:1px solid #e0e0e0;padding:7px 16px;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:all .2s;text-decoration:none}
+.btn-ghost-nav:hover{border-color:#F5A623;color:#111}
+.btn-cta-nav{background:#F5A623;color:#111;padding:9px 20px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;text-decoration:none}
+.btn-cta-nav:hover{background:#d4890f}
+.user-email-nav{font-size:12px;color:#888;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* LANGUAGE SWITCHER */
+.lang-switcher{display:flex;align-items:center;gap:2px;background:#f5f5f5;border:1px solid #e0e0e0;border-radius:8px;padding:3px}
+.lang-btn{background:none;border:none;font-size:11px;font-weight:700;color:#888;cursor:pointer;font-family:'Inter',sans-serif;padding:4px 8px;border-radius:5px;transition:all .2s;letter-spacing:.5px}
+.lang-btn.active{background:#F5A623;color:#111}
+.lang-btn:hover:not(.active){color:#111}
 
 /* HERO */
 .hero{padding:120px 5% 80px;max-width:1200px;margin:0 auto}
 .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .hero-left{}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px}
-.hero-badge-dot{width:6px;height:6px;background:#5B4FE8;border-radius:50%;animation:pulse 2s infinite}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff8ee;border:1px solid #fde5b0;color:#c47d00;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px}
+.hero-badge-dot{width:6px;height:6px;background:#F5A623;border-radius:50%;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-h1{font-size:clamp(36px,4.5vw,58px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px}
-h1 .accent{color:#5B4FE8}
-h1 .dim{color:#333}
-.hero-sub{font-size:17px;color:#777;max-width:480px;line-height:1.75;margin-bottom:36px}
+h1{font-size:clamp(36px,4.5vw,58px);font-weight:900;line-height:1.05;letter-spacing:-2.5px;margin-bottom:20px;color:#111}
+h1 .accent{color:#F5A623}
+h1 .dim{color:#cccccc}
+.hero-sub{font-size:17px;color:#666;max-width:480px;line-height:1.75;margin-bottom:36px}
 .hero-ctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:32px}
-.btn-hero-primary{background:#5B4FE8;color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif}
-.btn-hero-primary:hover{background:#4a3fd4;transform:translateY(-2px);box-shadow:0 8px 24px rgba(91,79,232,.3)}
+.btn-hero-primary{background:#F5A623;color:#111;padding:14px 28px;border-radius:10px;font-weight:700;font-size:15px;text-decoration:none;transition:all .2s;display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-hero-primary:hover{background:#d4890f;transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.3)}
 .btn-hero-secondary{color:#888;font-size:14px;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
-.btn-hero-secondary:hover{color:#f0f0ee}
+.btn-hero-secondary:hover{color:#111}
 .hero-social{display:flex;align-items:center;gap:12px}
 .hero-avatars{display:flex}
-.hero-avatar{width:32px;height:32px;border-radius:50%;border:2px solid #0e0e10;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
+.hero-avatar{width:32px;height:32px;border-radius:50%;border:2px solid #fff;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff}
 .hero-avatar:first-child{margin-left:0}
-.hero-proof{font-size:13px;color:#666}
-.hero-proof strong{color:#aaa}
+.hero-proof{font-size:13px;color:#888}
+.hero-proof strong{color:#555}
 
 /* HERO MOCKUP */
 .hero-right{position:relative}
-.mockup-wrap{background:#141416;border:1px solid #2a2a2a;border-radius:20px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.mockup-wrap{background:#ffffff;border:1px solid #eeeeee;border-radius:20px;padding:24px;box-shadow:0 24px 80px rgba(0,0,0,.08)}
 .mockup-header{display:flex;align-items:center;gap:6px;margin-bottom:20px}
 .mockup-dot{width:10px;height:10px;border-radius:50%}
-.mockup-score-section{background:#0e0e10;border-radius:14px;padding:20px;margin-bottom:14px}
+.mockup-score-section{background:#f9f9f9;border-radius:14px;padding:20px;margin-bottom:14px}
 .mockup-score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.mockup-score-label{font-size:11px;font-weight:700;color:#555;letter-spacing:.5px;text-transform:uppercase}
-.mockup-score-num{font-size:44px;font-weight:900;letter-spacing:-2px;color:#5B4FE8;line-height:1}
-.mockup-score-improve{font-size:14px;font-weight:700;color:#2ecc9a;background:#0f1e14;border:1px solid #1a3d24;padding:4px 10px;border-radius:8px}
-.mockup-bar{height:6px;background:#1e1e1e;border-radius:6px;overflow:hidden;margin-bottom:16px}
-.mockup-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#5B4FE8,#a69af5);animation:barFill 1.5s ease forwards}
+.mockup-score-label{font-size:11px;font-weight:700;color:#aaa;letter-spacing:.5px;text-transform:uppercase}
+.mockup-score-num{font-size:44px;font-weight:900;letter-spacing:-2px;color:#F5A623;line-height:1}
+.mockup-score-improve{font-size:14px;font-weight:700;color:#2ecc9a;background:#f0fff8;border:1px solid #b8f0d9;padding:4px 10px;border-radius:8px}
+.mockup-bar{height:6px;background:#eeeeee;border-radius:6px;overflow:hidden;margin-bottom:16px}
+.mockup-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#F5A623,#ffd37a);animation:barFill 1.5s ease forwards}
 @keyframes barFill{from{width:0}to{width:87%}}
 .mockup-criteria{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mockup-criterion{background:#141416;border-radius:8px;padding:10px}
-.mockup-criterion-name{font-size:10px;color:#666;margin-bottom:4px}
+.mockup-criterion{background:#ffffff;border:1px solid #eeeeee;border-radius:8px;padding:10px}
+.mockup-criterion-name{font-size:10px;color:#aaa;margin-bottom:4px}
 .mockup-criterion-score{font-size:12px;font-weight:700}
-.mockup-criterion-bar{height:3px;background:#2a2a2a;border-radius:3px;margin-top:4px;overflow:hidden}
+.mockup-criterion-bar{height:3px;background:#eeeeee;border-radius:3px;margin-top:4px;overflow:hidden}
 .mockup-criterion-fill{height:100%;border-radius:3px}
 .mockup-keywords{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .mockup-kw{font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px}
-.mockup-kw.added{background:#0f1e14;color:#2ecc9a;border:1px solid #1a3d24}
-.mockup-kw.missing{background:#1e1010;color:#e74c5b;border:1px solid #3d1a1a}
+.mockup-kw.added{background:#f0fff8;color:#2ecc9a;border:1px solid #b8f0d9}
+.mockup-kw.missing{background:#fff0f0;color:#e74c5b;border:1px solid #ffc0c0}
 
 /* LOGOS */
-.logos-bar{border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:28px 5%;background:#111}
+.logos-bar{border-top:1px solid #eeeeee;border-bottom:1px solid #eeeeee;padding:28px 5%;background:#fafafa}
 .logos-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
-.logos-label{font-size:12px;font-weight:600;color:#444;letter-spacing:1px;text-transform:uppercase;margin-right:16px}
-.logo-company{background:#1a1a1a;color:#555;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;letter-spacing:.3px}
+.logos-label{font-size:12px;font-weight:600;color:#aaa;letter-spacing:1px;text-transform:uppercase;margin-right:16px}
+.logo-company{background:#ffffff;color:#888;font-size:12px;font-weight:700;padding:8px 18px;border-radius:8px;letter-spacing:.3px;border:1px solid #eeeeee}
 
 /* SECTIONS */
 .section{padding:100px 5%}
 .section-inner{max-width:1200px;margin:0 auto}
-.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5B4FE8;margin-bottom:14px}
-h2.section-title{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px}
-.section-sub{font-size:16px;color:#666;max-width:540px;line-height:1.75}
+.section-eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#F5A623;margin-bottom:14px}
+h2.section-title{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;color:#111}
+.section-sub{font-size:16px;color:#777;max-width:540px;line-height:1.75}
 
 /* HOW IT WORKS */
-.how-bg{background:#0a0a0c}
+.how-bg{background:#fafafa}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
 .step-card{position:relative}
-.step-num{width:40px;height:40px;background:#5B4FE8;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;margin-bottom:20px}
-.step-card h3{font-size:18px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
-.step-card p{font-size:14px;color:#666;line-height:1.75}
-.step-connector{position:absolute;top:20px;right:-24px;color:#2a2a2a;font-size:24px;font-weight:300}
-.step-visual{background:#141416;border:1px solid #1e1e1e;border-radius:14px;padding:16px;margin-top:20px}
-.step-visual-line{height:8px;border-radius:4px;margin-bottom:8px;background:#1e1e1e}
-.step-visual-line.active{background:linear-gradient(90deg,#5B4FE8,#a69af5)}
-.step-visual-line.partial{background:linear-gradient(90deg,#5B4FE8 60%,#1e1e1e 60%)}
+.step-num{width:40px;height:40px;background:#F5A623;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#111;margin-bottom:20px}
+.step-card h3{font-size:18px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px;color:#111}
+.step-card p{font-size:14px;color:#777;line-height:1.75}
+.step-connector{position:absolute;top:20px;right:-24px;color:#ddd;font-size:24px;font-weight:300}
+.step-visual{background:#ffffff;border:1px solid #eeeeee;border-radius:14px;padding:16px;margin-top:20px}
+.step-visual-line{height:8px;border-radius:4px;margin-bottom:8px;background:#eeeeee}
+.step-visual-line.active{background:linear-gradient(90deg,#F5A623,#ffd37a)}
+.step-visual-line.partial{background:linear-gradient(90deg,#F5A623 60%,#eeeeee 60%)}
 
 /* FEATURES */
-.features-bg{background:#111}
-.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px;border-radius:20px;overflow:hidden;border:1px solid #1e1e1e}
-.feature-card{background:#141416;padding:40px;transition:background .2s}
-.feature-card:hover{background:#1a1a1a}
+.features-bg{background:#ffffff}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:60px;border-radius:20px;overflow:hidden;border:1px solid #eeeeee}
+.feature-card{background:#ffffff;padding:40px;transition:background .2s}
+.feature-card:hover{background:#fafafa}
 .feature-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
-.feature-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:10px}
-.feature-card p{font-size:14px;color:#666;line-height:1.75}
-.feature-tag{display:inline-block;background:#5B4FE8;color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:14px;letter-spacing:.5px;text-transform:uppercase}
+.feature-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:10px;color:#111}
+.feature-card p{font-size:14px;color:#777;line-height:1.75}
+.feature-tag{display:inline-block;background:#F5A623;color:#111;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:14px;letter-spacing:.5px;text-transform:uppercase}
 
 /* STATS */
-.stats-section{background:#0a0a0c;padding:80px 5%}
+.stats-section{background:#111111;padding:80px 5%}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1200px;margin:0 auto}
 .stat-item{text-align:center}
-.stat-number{font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#f0f0ee;line-height:1;margin-bottom:6px}
-.stat-number span{color:#5B4FE8}
-.stat-desc{font-size:13px;color:#555;font-weight:500}
+.stat-number{font-size:clamp(36px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#ffffff;line-height:1;margin-bottom:6px}
+.stat-number span{color:#F5A623}
+.stat-desc{font-size:13px;color:#888;font-weight:500}
 
 /* EXEMPLES PREVIEW */
 .examples-preview{max-width:1200px;margin:0 auto;padding:0}
 .ex-filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:32px}
-.ex-filter{padding:8px 20px;border-radius:20px;border:1px solid #2a2a2a;background:transparent;color:#777;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.ex-filter:hover{border-color:#5B4FE8;color:#f0f0ee}
-.ex-filter.active{background:#5B4FE8;border-color:#5B4FE8;color:#fff}
+.ex-filter{padding:8px 20px;border-radius:20px;border:1px solid #e0e0e0;background:transparent;color:#777;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.ex-filter:hover{border-color:#F5A623;color:#111}
+.ex-filter.active{background:#F5A623;border-color:#F5A623;color:#111}
 .ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
-.ex-card{background:#141416;border:1px solid #222;border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s}
-.ex-card:hover{transform:translateY(-3px);border-color:#5B4FE8}
-.ex-card-preview{background:#1a1a1c;padding:14px;height:120px;overflow:hidden;position:relative;border-bottom:1px solid #222}
-.ex-card-preview::after{content:"";position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,#1a1a1c)}
-.ex-card-preview-text{font-size:6px;line-height:1.5;color:#555;font-family:monospace;white-space:pre-wrap}
+.ex-card{background:#ffffff;border:1px solid #eeeeee;border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s}
+.ex-card:hover{transform:translateY(-3px);border-color:#F5A623}
+.ex-card-preview{background:#f9f9f9;padding:14px;height:120px;overflow:hidden;position:relative;border-bottom:1px solid #eeeeee}
+.ex-card-preview::after{content:"";position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,#f9f9f9)}
+.ex-card-preview-text{font-size:6px;line-height:1.5;color:#aaa;font-family:monospace;white-space:pre-wrap}
 .ex-card-info{padding:14px}
 .ex-card-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px}
-.ex-card-title{font-size:13px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
-.ex-card-meta{font-size:11px;color:#555;margin-bottom:10px}
-.ex-card-btn{width:100%;padding:8px;background:#5B4FE8;color:#fff;border:none;border-radius:7px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
-.ex-card-btn:hover{background:#4a3fd4}
+.ex-card-title{font-size:13px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px;color:#111}
+.ex-card-meta{font-size:11px;color:#888;margin-bottom:10px}
+.ex-card-btn{width:100%;padding:8px;background:#F5A623;color:#111;border:none;border-radius:7px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s}
+.ex-card-btn:hover{background:#d4890f}
 
 /* TESTIMONIALS SCROLL */
-.avis-section{padding:80px 0;overflow:hidden;position:relative}
+.avis-section{padding:80px 0;overflow:hidden;position:relative;background:#fafafa}
 .avis-section::before,.avis-section::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:1}
-.avis-section::before{left:0;background:linear-gradient(to right,#0e0e10,transparent)}
-.avis-section::after{right:0;background:linear-gradient(to left,#0e0e10,transparent)}
+.avis-section::before{left:0;background:linear-gradient(to right,#fafafa,transparent)}
+.avis-section::after{right:0;background:linear-gradient(to left,#fafafa,transparent)}
 .avis-track{display:flex;gap:16px;animation:scroll 40s linear infinite;width:max-content}
 .avis-track:hover{animation-play-state:paused}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.avis-card{background:#141416;border:1px solid #222;border-radius:14px;padding:22px;width:280px;flex-shrink:0}
-.avis-stars{color:#5B4FE8;font-size:13px;letter-spacing:2px;margin-bottom:12px}
-.avis-text{font-size:13px;color:#888;line-height:1.75;margin-bottom:16px;font-style:italic}
+.avis-card{background:#ffffff;border:1px solid #eeeeee;border-radius:14px;padding:22px;width:280px;flex-shrink:0}
+.avis-stars{color:#F5A623;font-size:13px;letter-spacing:2px;margin-bottom:12px}
+.avis-text{font-size:13px;color:#777;line-height:1.75;margin-bottom:16px;font-style:italic}
 .avis-author{display:flex;align-items:center;gap:10px}
 .avis-avatar{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
-.avis-name{font-size:13px;font-weight:600;color:#f0f0ee}
-.avis-role{font-size:11px;color:#555}
+.avis-name{font-size:13px;font-weight:600;color:#111}
+.avis-role{font-size:11px;color:#888}
 
 /* TRUSTED BY */
 .trusted-quote{max-width:800px;margin:0 auto;text-align:center;padding:80px 5%}
-.quote-text{font-size:clamp(18px,2.5vw,26px);font-weight:600;line-height:1.6;color:#ccc;margin-bottom:24px;font-style:italic}
+.quote-text{font-size:clamp(18px,2.5vw,26px);font-weight:600;line-height:1.6;color:#444;margin-bottom:24px;font-style:italic}
 .quote-author{display:flex;align-items:center;justify-content:center;gap:12px}
-.quote-avatar{width:44px;height:44px;border-radius:50%;background:#5B4FE8;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
-.quote-name{font-size:14px;font-weight:700;color:#f0f0ee}
-.quote-role{font-size:12px;color:#555}
+.quote-avatar{width:44px;height:44px;border-radius:50%;background:#F5A623;display:flex;align-items:center;justify-content:center;font-weight:700;color:#111}
+.quote-name{font-size:14px;font-weight:700;color:#111}
+.quote-role{font-size:12px;color:#888}
 
 /* PRICING */
-.pricing-section{background:#0a0a0c;padding:100px 5%}
+.pricing-section{background:#fafafa;padding:100px 5%}
 .pricing-inner{max-width:1000px;margin:0 auto}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
-.price-card{background:#141416;border:1px solid #222;border-radius:18px;padding:32px;position:relative;transition:border-color .2s}
-.price-card:hover{border-color:#333}
-.price-card.featured{border:2px solid #5B4FE8;background:#141416}
-.price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#5B4FE8;color:#fff;font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;white-space:nowrap;letter-spacing:.5px}
-.price-plan{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-bottom:10px}
-.price-amount{font-size:40px;font-weight:900;letter-spacing:-2px;color:#f0f0ee;line-height:1;margin-bottom:6px}
-.price-amount small{font-size:14px;color:#555;letter-spacing:0;font-weight:500}
-.price-desc{font-size:13px;color:#555;margin:10px 0 24px;line-height:1.6}
+.price-card{background:#ffffff;border:1px solid #eeeeee;border-radius:18px;padding:32px;position:relative;transition:border-color .2s}
+.price-card:hover{border-color:#dddddd}
+.price-card.featured{border:2px solid #F5A623;background:#ffffff}
+.price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:#F5A623;color:#111;font-size:11px;font-weight:700;padding:5px 16px;border-radius:20px;white-space:nowrap;letter-spacing:.5px}
+.price-plan{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#aaa;margin-bottom:10px}
+.price-amount{font-size:40px;font-weight:900;letter-spacing:-2px;color:#111;line-height:1;margin-bottom:6px}
+.price-amount small{font-size:14px;color:#aaa;letter-spacing:0;font-weight:500}
+.price-desc{font-size:13px;color:#888;margin:10px 0 24px;line-height:1.6}
 .price-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.price-features li{font-size:13px;color:#888;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
-.price-features li::before{content:'✓';color:#5B4FE8;font-weight:700;flex-shrink:0;margin-top:1px}
-.price-features li.na{color:#333}
-.price-features li.na::before{content:'—';color:#2a2a2a}
+.price-features li{font-size:13px;color:#555;display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.price-features li::before{content:'✓';color:#F5A623;font-weight:700;flex-shrink:0;margin-top:1px}
+.price-features li.na{color:#ccc}
+.price-features li.na::before{content:'—';color:#ddd}
 .btn-price{display:block;text-align:center;padding:12px 20px;border-radius:10px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif;width:100%}
-.btn-price-primary{background:#5B4FE8;color:#fff}
-.btn-price-primary:hover{background:#4a3fd4}
-.btn-price-ghost{background:transparent;border:1px solid #2a2a2a;color:#888}
-.btn-price-ghost:hover{border-color:#5B4FE8;color:#f0f0ee}
+.btn-price-primary{background:#F5A623;color:#111}
+.btn-price-primary:hover{background:#d4890f}
+.btn-price-ghost{background:transparent;border:1px solid #e0e0e0;color:#555}
+.btn-price-ghost:hover{border-color:#F5A623;color:#111}
 
 /* FAQ */
-.faq-section{padding:100px 5%}
+.faq-section{padding:100px 5%;background:#ffffff}
 .faq-inner{max-width:760px;margin:0 auto}
 .faq-grid{margin-top:48px;display:flex;flex-direction:column;gap:2px}
-.faq-item{background:#141416;border:1px solid #1e1e1e;border-radius:12px;overflow:hidden;margin-bottom:8px}
-.faq-question{padding:20px 24px;font-size:15px;font-weight:600;color:#f0f0ee;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .2s}
-.faq-question:hover{background:#1a1a1a}
-.faq-icon{font-size:18px;color:#5B4FE8;flex-shrink:0;transition:transform .3s;font-weight:300}
+.faq-item{background:#ffffff;border:1px solid #eeeeee;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.faq-question{padding:20px 24px;font-size:15px;font-weight:600;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .2s}
+.faq-question:hover{background:#fafafa}
+.faq-icon{font-size:18px;color:#F5A623;flex-shrink:0;transition:transform .3s;font-weight:300}
 .faq-answer{display:none;padding:0 24px 20px;font-size:14px;color:#777;line-height:1.8}
 .faq-item.open .faq-answer{display:block}
 .faq-item.open .faq-icon{transform:rotate(45deg)}
 
 /* APP SECTION */
-.app-section{padding:80px 5% 40px}
+.app-section{padding:80px 5% 40px;background:#fafafa}
 .app-section-inner{max-width:900px;margin:0 auto}
-.counter-bar{background:#1a1a2e;border:1px solid #2d2d5e;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.counter-bar span{font-size:13px;color:#777}
-.counter-bar strong{color:#a69af5}
+.counter-bar{background:#fff8ee;border:1px solid #fde5b0;border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.counter-bar span{font-size:13px;color:#888}
+.counter-bar strong{color:#F5A623}
 .steps-nav{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:40px}
-.step-dot{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#333;transition:color .3s}
-.step-dot.active{color:#f0f0ee}
-.step-dot.done{color:#5B4FE8}
-.step-dot-num{width:28px;height:28px;border-radius:50%;border:1.5px solid #2a2a2a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .3s}
-.step-dot.active .step-dot-num{border-color:#5B4FE8;background:#5B4FE8;color:#fff}
-.step-dot.done .step-dot-num{border-color:#5B4FE8;background:#5B4FE8;color:#fff}
-.step-line{width:48px;height:1px;background:#1e1e1e;margin:0 4px}
-.card{background:#141416;border:1px solid #1e1e1e;border-radius:20px;padding:36px;margin-bottom:20px}
-.card-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#444;margin-bottom:18px;display:flex;align-items:center;gap:10px}
-.card-title::after{content:'';flex:1;height:1px;background:#1e1e1e}
-textarea{width:100%;background:#0e0e10;border:1px solid #222;border-radius:12px;padding:16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;resize:vertical;transition:border .2s;outline:none}
-textarea:focus{border-color:#5B4FE8}
-textarea::placeholder{color:#333}
-.input-hint{font-size:12px;color:#444;margin-top:8px}
-.btn-primary{background:#5B4FE8;color:#fff;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .2s;width:100%;margin-top:20px;font-family:'Inter',sans-serif}
-.btn-primary:hover{background:#4a3fd4;transform:translateY(-1px)}
-.btn-primary:disabled{background:#1e1e1e;color:#444;cursor:not-allowed;transform:none}
-.btn-secondary{background:transparent;color:#f0f0ee;padding:12px 28px;border-radius:12px;font-weight:600;font-size:14px;border:1px solid #2a2a2a;cursor:pointer;transition:all .2s;margin-top:12px;width:100%;font-family:'Inter',sans-serif}
-.btn-secondary:hover{border-color:#5B4FE8;color:#5B4FE8}
+.step-dot{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#ccc;transition:color .3s}
+.step-dot.active{color:#111}
+.step-dot.done{color:#F5A623}
+.step-dot-num{width:28px;height:28px;border-radius:50%;border:1.5px solid #e0e0e0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;transition:all .3s}
+.step-dot.active .step-dot-num{border-color:#F5A623;background:#F5A623;color:#111}
+.step-dot.done .step-dot-num{border-color:#F5A623;background:#F5A623;color:#111}
+.step-line{width:48px;height:1px;background:#e0e0e0;margin:0 4px}
+.card{background:#ffffff;border:1px solid #eeeeee;border-radius:20px;padding:36px;margin-bottom:20px}
+.card-title{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.card-title::after{content:'';flex:1;height:1px;background:#eeeeee}
+textarea{width:100%;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:12px;padding:16px;color:#111;font-family:'Inter',sans-serif;font-size:14px;line-height:1.7;resize:vertical;transition:border .2s;outline:none}
+textarea:focus{border-color:#F5A623}
+textarea::placeholder{color:#bbb}
+.input-hint{font-size:12px;color:#aaa;margin-top:8px}
+.btn-primary{background:#F5A623;color:#111;padding:14px 32px;border-radius:12px;font-weight:700;font-size:15px;border:none;cursor:pointer;transition:all .2s;width:100%;margin-top:20px;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:#d4890f;transform:translateY(-1px)}
+.btn-primary:disabled{background:#eeeeee;color:#aaa;cursor:not-allowed;transform:none}
+.btn-secondary{background:transparent;color:#555;padding:12px 28px;border-radius:12px;font-weight:600;font-size:14px;border:1px solid #e0e0e0;cursor:pointer;transition:all .2s;margin-top:12px;width:100%;font-family:'Inter',sans-serif}
+.btn-secondary:hover{border-color:#F5A623;color:#111}
 .loading{display:none;text-align:center;padding:60px 20px}
 .loading.show{display:block}
-.spinner{width:44px;height:44px;border:3px solid #1e1e1e;border-top-color:#5B4FE8;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
+.spinner{width:44px;height:44px;border:3px solid #eeeeee;border-top-color:#F5A623;border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 24px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:15px;color:#777;font-weight:500}
-.loading-sub{font-size:13px;color:#444;margin-top:8px}
+.loading-text{font-size:15px;color:#555;font-weight:500}
+.loading-sub{font-size:13px;color:#aaa;margin-top:8px}
 .results{display:none}
 .results.show{display:block}
 .score-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
 .score-big{display:flex;align-items:baseline;gap:6px}
-.score-big span{font-size:64px;font-weight:900;letter-spacing:-3px;color:#f0f0ee;line-height:1}
-.score-big small{font-size:18px;color:#444}
-.score-label{font-size:11px;color:#444;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
-.score-bar-wrap{background:#1a1a1a;border-radius:8px;height:6px;overflow:hidden;margin-bottom:28px}
-.score-bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#5B4FE8,#a69af5);width:0%;transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
+.score-big span{font-size:64px;font-weight:900;letter-spacing:-3px;color:#111;line-height:1}
+.score-big small{font-size:18px;color:#aaa}
+.score-label{font-size:11px;color:#aaa;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.score-bar-wrap{background:#eeeeee;border-radius:8px;height:6px;overflow:hidden;margin-bottom:28px}
+.score-bar-fill{height:100%;border-radius:8px;background:linear-gradient(90deg,#F5A623,#ffd37a);width:0%;transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
 .criteria-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px}
-.criterion{background:#0e0e10;border:1px solid #1a1a1a;border-radius:10px;padding:14px}
+.criterion{background:#f9f9f9;border:1px solid #eeeeee;border-radius:10px;padding:14px}
 .criterion-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.criterion-name{font-size:12px;font-weight:600;color:#666}
+.criterion-name{font-size:12px;font-weight:600;color:#888}
 .criterion-score{font-size:12px;font-weight:700}
-.criterion-bar{background:#1a1a1a;border-radius:4px;height:3px;overflow:hidden}
+.criterion-bar{background:#eeeeee;border-radius:4px;height:3px;overflow:hidden}
 .criterion-fill{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(.25,.8,.25,1)}
 .score-high{color:#2ecc9a}.fill-high{background:#2ecc9a}
-.score-mid{color:#f5a623}.fill-mid{background:#f5a623}
+.score-mid{color:#F5A623}.fill-mid{background:#F5A623}
 .score-low{color:#e74c5b}.fill-low{background:#e74c5b}
-.cv-optimized{background:#0e0e10;border:1px solid #1a1a1a;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:#bbb;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto}
+.cv-optimized{background:#f9f9f9;border:1px solid #eeeeee;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.8;color:#444;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto}
 .cv-optimized::-webkit-scrollbar{width:3px}
-.cv-optimized::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:2px}
+.cv-optimized::-webkit-scrollbar-thumb{background:#ddd;border-radius:2px}
 .keywords-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.keyword{background:#1a1a2e;border:1px solid #2d2d5e;color:#a69af5;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
-.keyword.missing{background:#1e1010;border-color:#3d1a1a;color:#e74c5b}
-.keyword.added{background:#0f1e14;border-color:#1a3d24;color:#2ecc9a}
+.keyword{background:#fff8ee;border:1px solid #fde5b0;color:#c47d00;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.keyword.missing{background:#fff0f0;border-color:#ffc0c0;color:#e74c5b}
+.keyword.added{background:#f0fff8;border-color:#b8f0d9;color:#2ecc9a}
 .suggestions-list{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.suggestion{background:#0e0e10;border-left:3px solid #5B4FE8;border-radius:0 10px 10px 0;padding:12px 16px}
-.suggestion-label{font-size:10px;font-weight:700;color:#5B4FE8;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
-.suggestion-text{font-size:13px;color:#666;line-height:1.7}
-.copy-btn{background:#1a1a1a;border:1px solid #222;color:#666;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;margin-top:14px;font-family:'Inter',sans-serif}
-.copy-btn:hover{border-color:#5B4FE8;color:#5B4FE8}
+.suggestion{background:#f9f9f9;border-left:3px solid #F5A623;border-radius:0 10px 10px 0;padding:12px 16px}
+.suggestion-label{font-size:10px;font-weight:700;color:#F5A623;letter-spacing:.5px;text-transform:uppercase;margin-bottom:4px}
+.suggestion-text{font-size:13px;color:#777;line-height:1.7}
+.copy-btn{background:#f5f5f5;border:1px solid #e0e0e0;color:#555;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;margin-top:14px;font-family:'Inter',sans-serif}
+.copy-btn:hover{border-color:#F5A623;color:#111}
 .copy-btn.copied{border-color:#2ecc9a;color:#2ecc9a}
-.tabs{display:flex;gap:4px;background:#0e0e10;border:1px solid #1a1a1a;border-radius:12px;padding:4px;margin-bottom:20px;flex-wrap:wrap}
-.tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;color:#444;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;min-width:80px}
-.tab.active{background:#141416;color:#f0f0ee;border:1px solid #222}
-.section-title-sm{font-size:11px;font-weight:700;color:#444;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.section-title-sm::after{content:'';flex:1;height:1px;background:#1a1a1a}
-.ldm-result{background:#0e0e10;border:1px solid #1a1a1a;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.9;color:#bbb;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto;margin-top:14px}
-.locked-card{background:#141416;border:1px solid #2d2d5e;border-radius:14px;padding:36px;text-align:center}
-.locked-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
-.locked-card p{color:#666;font-size:14px;margin-bottom:20px;line-height:1.7}
-.paywall{display:none;background:#141416;border:1px solid #2d2d5e;border-radius:20px;padding:48px;text-align:center}
+.tabs{display:flex;gap:4px;background:#f5f5f5;border:1px solid #eeeeee;border-radius:12px;padding:4px;margin-bottom:20px;flex-wrap:wrap}
+.tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;color:#aaa;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;min-width:80px}
+.tab.active{background:#ffffff;color:#111;border:1px solid #eeeeee}
+.section-title-sm{font-size:11px;font-weight:700;color:#aaa;letter-spacing:.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-title-sm::after{content:'';flex:1;height:1px;background:#eeeeee}
+.ldm-result{background:#f9f9f9;border:1px solid #eeeeee;border-radius:14px;padding:24px;white-space:pre-wrap;font-size:14px;line-height:1.9;color:#444;font-family:'Inter',sans-serif;max-height:500px;overflow-y:auto;margin-top:14px}
+.locked-card{background:#ffffff;border:1px solid #eeeeee;border-radius:14px;padding:36px;text-align:center}
+.locked-card h3{font-size:18px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px;color:#111}
+.locked-card p{color:#777;font-size:14px;margin-bottom:20px;line-height:1.7}
+.paywall{display:none;background:#ffffff;border:1px solid #fde5b0;border-radius:20px;padding:48px;text-align:center}
 .paywall.show{display:block}
-.paywall h3{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:12px}
-.paywall p{color:#666;font-size:15px;margin-bottom:32px;line-height:1.7}
+.paywall h3{font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:12px;color:#111}
+.paywall p{color:#777;font-size:15px;margin-bottom:32px;line-height:1.7}
 
 /* MODAL AUTH */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center}
 .modal-overlay.show{display:flex}
-.modal{background:#141416;border:1px solid #2a2a2a;border-radius:20px;padding:40px;width:100%;max-width:420px;margin:20px;position:relative}
-.modal h2{font-size:22px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
-.modal p{font-size:14px;color:#666;margin-bottom:24px}
-.modal-tabs{display:flex;gap:4px;background:#0e0e10;border:1px solid #1a1a1a;border-radius:10px;padding:4px;margin-bottom:24px}
-.modal-tab{flex:1;padding:8px;border-radius:8px;border:none;background:transparent;color:#444;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
-.modal-tab.active{background:#1e1e1e;color:#f0f0ee}
+.modal{background:#ffffff;border:1px solid #eeeeee;border-radius:20px;padding:40px;width:100%;max-width:420px;margin:20px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.modal h2{font-size:22px;font-weight:800;letter-spacing:-1px;margin-bottom:8px;color:#111}
+.modal p{font-size:14px;color:#777;margin-bottom:24px}
+.modal-tabs{display:flex;gap:4px;background:#f5f5f5;border:1px solid #eeeeee;border-radius:10px;padding:4px;margin-bottom:24px}
+.modal-tab{flex:1;padding:8px;border-radius:8px;border:none;background:transparent;color:#aaa;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s}
+.modal-tab.active{background:#ffffff;color:#111}
 .form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:11px;font-weight:700;color:#555;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
-.form-input{width:100%;background:#0e0e10;border:1px solid #222;border-radius:10px;padding:12px 16px;color:#f0f0ee;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border .2s}
-.form-input:focus{border-color:#5B4FE8}
-.btn-full{width:100%;background:#5B4FE8;color:#fff;padding:13px;border-radius:10px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;margin-top:8px}
-.btn-full:hover{background:#4a3fd4}
-.btn-full:disabled{background:#1e1e1e;color:#444;cursor:not-allowed}
-.modal-error{background:#1e1010;border:1px solid #3d1a1a;color:#e74c5b;font-size:13px;padding:10px 14px;border-radius:8px;margin-bottom:16px;display:none}
+.form-group label{display:block;font-size:11px;font-weight:700;color:#888;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.form-input{width:100%;background:#f9f9f9;border:1px solid #e0e0e0;border-radius:10px;padding:12px 16px;color:#111;font-family:'Inter',sans-serif;font-size:14px;outline:none;transition:border .2s}
+.form-input:focus{border-color:#F5A623}
+.btn-full{width:100%;background:#F5A623;color:#111;padding:13px;border-radius:10px;font-weight:700;font-size:15px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;margin-top:8px}
+.btn-full:hover{background:#d4890f}
+.btn-full:disabled{background:#eeeeee;color:#aaa;cursor:not-allowed}
+.modal-error{background:#fff0f0;border:1px solid #ffc0c0;color:#e74c5b;font-size:13px;padding:10px 14px;border-radius:8px;margin-bottom:16px;display:none}
 .modal-error.show{display:block}
-.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:#444;font-size:20px;cursor:pointer;padding:4px}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:#aaa;font-size:20px;cursor:pointer;padding:4px}
 
 /* FINAL CTA */
-.final-cta{background:#111;padding:120px 5%;text-align:center}
+.final-cta{background:#111111;padding:120px 5%;text-align:center}
 .final-cta h2{font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:16px;max-width:700px;margin-left:auto;margin-right:auto}
-.final-cta p{font-size:16px;color:#555;margin-bottom:40px}
+.final-cta p{font-size:16px;color:#666;margin-bottom:40px}
 
 /* PAGES */
 .page{display:none;max-width:800px;margin:100px auto 60px;padding:0 5%}
 .page.show{display:block}
-.page h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:8px}
-.page-date{font-size:13px;color:#444;margin-bottom:40px}
-.page h2{font-size:18px;font-weight:700;margin:32px 0 12px}
+.page h1{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1.5px;margin-bottom:8px;color:#111}
+.page-date{font-size:13px;color:#aaa;margin-bottom:40px}
+.page h2{font-size:18px;font-weight:700;margin:32px 0 12px;color:#111}
 .page p{font-size:15px;color:#777;line-height:1.8;margin-bottom:16px}
-.page a{color:#5B4FE8;text-decoration:none}
-.contact-form{background:#141416;border:1px solid #1e1e1e;border-radius:16px;padding:32px;margin-top:32px}
-.contact-success{background:#0f1e14;border:1px solid #1a3d24;color:#2ecc9a;padding:16px;border-radius:10px;font-size:14px;font-weight:600;display:none;margin-top:16px}
+.page a{color:#F5A623;text-decoration:none}
+.contact-form{background:#ffffff;border:1px solid #eeeeee;border-radius:16px;padding:32px;margin-top:32px}
+.contact-success{background:#f0fff8;border:1px solid #b8f0d9;color:#2ecc9a;padding:16px;border-radius:10px;font-size:14px;font-weight:600;display:none;margin-top:16px}
 .contact-success.show{display:block}
 
 /* FOOTER */
-footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
+footer{background:#111111;border-top:1px solid #222;padding:60px 5% 40px}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
-.footer-brand .footer-logo{font-weight:900;font-size:20px;letter-spacing:-1px;margin-bottom:12px}
-.footer-brand .footer-logo span{color:#5B4FE8}
-.footer-brand p{font-size:13px;color:#444;line-height:1.7;max-width:260px}
-.footer-col h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#555;margin-bottom:16px}
+.footer-brand .footer-logo{font-weight:900;font-size:20px;letter-spacing:-1px;margin-bottom:12px;color:#ffffff}
+.footer-brand .footer-logo span{color:#F5A623}
+.footer-brand p{font-size:13px;color:#555;line-height:1.7;max-width:260px}
+.footer-col h4{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#444;margin-bottom:16px}
 .footer-col a{display:block;font-size:13px;color:#444;text-decoration:none;margin-bottom:10px;transition:color .2s;cursor:pointer}
 .footer-col a:hover{color:#f0f0ee}
-.footer-bottom{border-top:1px solid #1a1a1a;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-copy{font-size:12px;color:#333}
+.footer-bottom{border-top:1px solid #222;padding-top:24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:#444}
 .footer-social{display:flex;gap:12px}
 .social-link{width:32px;height:32px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;text-decoration:none;transition:background .2s}
 .social-link:hover{background:#2a2a2a}
@@ -356,11 +361,16 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
       <a href="#avis">Avis</a>
       <a href="#tarifs">Tarifs</a>
     </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('es')">ES</button>
+    </div>
     <div class="nav-actions">
       <span class="user-email-nav" id="userEmailDisplay" style="display:none"></span>
-      <button class="btn-ghost-nav" id="btnConnexion" onclick="openAuth('login')">Connexion</button>
-      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-cta-nav">Pro — 14,90€/mois</a>
-      <button class="btn-ghost-nav" id="btnLogout" style="display:none" onclick="logout()">Déconnexion</button>
+      <button class="btn-ghost-nav" id="btnConnexion" onclick="openAuth('login')" data-i18n="nav.login">Connexion</button>
+      <a href="https://buy.stripe.com/bJeaEW1S0654b7hfRG2go06" class="btn-cta-nav" data-i18n="nav.pro">Pro — 14,90€/mois</a>
+      <button class="btn-ghost-nav" id="btnLogout" style="display:none" onclick="logout()" data-i18n="nav.logout">Déconnexion</button>
     </div>
   </div>
 </nav>
@@ -389,12 +399,12 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
   <div class="hero">
     <div class="hero-inner">
       <div class="hero-left">
-        <div class="hero-badge"><div class="hero-badge-dot"></div> Propulsé par Claude AI</div>
-        <h1>Le meilleur<br><span class="accent">optimiseur de CV</span><br><span class="dim">par IA</span></h1>
-        <p class="hero-sub">Tu ne fixeras plus jamais une page blanche. CVBoost analyse ton CV, cible les mots-clés ATS et réécrit chaque ligne pour décrocher l'entretien.</p>
+        <div class="hero-badge"><div class="hero-badge-dot"></div> <span data-i18n="hero.badge">Propulsé par Claude AI</span></div>
+        <h1 data-i18n="hero.h1">Le meilleur<br><span class="accent">optimiseur de CV</span><br><span class="dim">par IA</span></h1>
+        <p class="hero-sub" data-i18n="hero.sub">Tu ne fixeras plus jamais une page blanche. CVBoost analyse ton CV, cible les mots-clés ATS et réécrit chaque ligne pour décrocher l'entretien.</p>
         <div class="hero-ctas">
-          <a href="#optimiser" class="btn-hero-primary" onclick="scrollToApp()">Optimiser mon CV gratuitement →</a>
-          <a href="#comment-ca-marche" class="btn-hero-secondary">Voir comment ça marche ↓</a>
+          <a href="#optimiser" class="btn-hero-primary" onclick="scrollToApp()" data-i18n="hero.cta1">Optimiser mon CV gratuitement →</a>
+          <a href="#comment-ca-marche" class="btn-hero-secondary" data-i18n="hero.cta2">Voir comment ça marche ↓</a>
         </div>
         <div class="hero-social">
           <div class="hero-avatars">
@@ -403,7 +413,7 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
             <div class="hero-avatar" style="background:#e74c8b">TB</div>
             <div class="hero-avatar" style="background:#f5a623">AR</div>
           </div>
-          <p class="hero-proof"><strong>+12 400 étudiants</strong> ont décroché un entretien ce mois</p>
+          <p class="hero-proof" data-i18n="hero.proof"><strong>+12 400 étudiants</strong> ont décroché un entretien ce mois</p>
         </div>
       </div>
       <div class="hero-right">
@@ -498,14 +508,14 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
 <!-- HOW IT WORKS -->
 <section class="section how-bg" id="comment-ca-marche">
   <div class="section-inner">
-    <div class="section-eyebrow">Comment ça marche</div>
-    <h2 class="section-title">De "pas de réponse"<br>à "entretien demain"</h2>
-    <p class="section-sub">Trois étapes. Trente secondes. Un CV qui déclenche des callbacks.</p>
+    <div class="section-eyebrow" data-i18n="how.eyebrow">Comment ça marche</div>
+    <h2 class="section-title" data-i18n="how.title">De "pas de réponse"<br>à "entretien demain"</h2>
+    <p class="section-sub" data-i18n="how.sub">Trois étapes. Trente secondes. Un CV qui déclenche des callbacks.</p>
     <div class="steps-grid">
       <div class="step-card">
         <div class="step-num">01</div>
-        <h3>Colle ton CV et l'offre d'emploi</h3>
-        <p>Copie le texte brut de ton CV et l'offre ciblée. CVBoost lit les deux et comprend exactement ce que le recruteur cherche.</p>
+        <h3 data-i18n="how.step1.h">Colle ton CV et l'offre d'emploi</h3>
+        <p data-i18n="how.step1.p">Copie le texte brut de ton CV et l'offre ciblée. CVBoost lit les deux et comprend exactement ce que le recruteur cherche.</p>
         <div class="step-visual">
           <div class="step-visual-line active"></div>
           <div class="step-visual-line active"></div>
@@ -516,8 +526,8 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
       </div>
       <div class="step-card">
         <div class="step-num">02</div>
-        <h3>L'IA analyse et optimise en 30 secondes</h3>
-        <p>Score ATS sur 23 critères, mots-clés manquants détectés, bullet points réécrits avec des métriques, résumé pro personnalisé.</p>
+        <h3 data-i18n="how.step2.h">L'IA analyse et optimise en 30 secondes</h3>
+        <p data-i18n="how.step2.p">Score ATS sur 23 critères, mots-clés manquants détectés, bullet points réécrits avec des métriques, résumé pro personnalisé.</p>
         <div class="step-visual">
           <div class="step-visual-line active"></div>
           <div class="step-visual-line active"></div>
@@ -528,8 +538,8 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
       </div>
       <div class="step-card">
         <div class="step-num">03</div>
-        <h3>Copie ton CV optimisé et candidate</h3>
-        <p>CV réécrit prêt à l'emploi, lettre de motivation générée automatiquement. Crée une version différente pour chaque offre en quelques clics.</p>
+        <h3 data-i18n="how.step3.h">Copie ton CV optimisé et candidate</h3>
+        <p data-i18n="how.step3.p">CV réécrit prêt à l'emploi, lettre de motivation générée automatiquement. Crée une version différente pour chaque offre en quelques clics.</p>
         <div class="step-visual">
           <div class="step-visual-line active"></div>
           <div class="step-visual-line active" style="background:linear-gradient(90deg,#2ecc9a,#2ecc9a)"></div>
@@ -629,90 +639,90 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
 <section class="app-section" id="optimiser">
   <div class="app-section-inner">
     <div style="text-align:center;margin-bottom:36px">
-      <div class="section-eyebrow" style="text-align:center">Essai gratuit</div>
-      <h2 class="section-title" style="text-align:center">Optimise ton CV maintenant</h2>
-      <p style="text-align:center;color:#555;font-size:15px">1 CV + 1 lettre de motivation gratuits. Aucune carte requise.</p>
+      <div class="section-eyebrow" style="text-align:center" data-i18n="app.eyebrow">Essai gratuit</div>
+      <h2 class="section-title" style="text-align:center" data-i18n="app.title">Optimise ton CV maintenant</h2>
+      <p style="text-align:center;color:#555;font-size:15px" data-i18n="app.sub">1 CV + 1 lettre de motivation gratuits. Aucune carte requise.</p>
     </div>
     <div class="counter-bar">
-      <span>CV restants</span><strong id="cvCount">1 / 1</strong>
+      <span data-i18n="app.cvLeft">CV restants</span><strong id="cvCount">1 / 1</strong>
     </div>
     <div class="counter-bar">
-      <span>Lettres de motivation restantes</span><strong id="ldmCount">1 / 1</strong>
+      <span data-i18n="app.ldmLeft">Lettres de motivation restantes</span><strong id="ldmCount">1 / 1</strong>
     </div>
     <div class="steps-nav">
-      <div class="step-dot active" id="step1dot"><div class="step-dot-num">1</div><span>Ton CV</span></div>
+      <div class="step-dot active" id="step1dot"><div class="step-dot-num">1</div><span data-i18n="app.step1">Ton CV</span></div>
       <div class="step-line"></div>
-      <div class="step-dot" id="step2dot"><div class="step-dot-num">2</div><span>L'offre</span></div>
+      <div class="step-dot" id="step2dot"><div class="step-dot-num">2</div><span data-i18n="app.step2">L'offre</span></div>
       <div class="step-line"></div>
-      <div class="step-dot" id="step3dot"><div class="step-dot-num">3</div><span>Résultat</span></div>
+      <div class="step-dot" id="step3dot"><div class="step-dot-num">3</div><span data-i18n="app.step3">Résultat</span></div>
     </div>
     <div id="step1">
       <div class="card">
-        <div class="card-title">Ton CV actuel</div>
-        <textarea id="cvInput" rows="12" placeholder="Colle ici le texte complet de ton CV..."></textarea>
-        <div class="input-hint">Conseil : copie-colle le texte brut de ton CV Word ou PDF. Plus tu mets de détails, meilleur sera le résultat.</div>
-        <button class="btn-primary" onclick="goStep2()">Continuer → Ajouter l'offre d'emploi</button>
+        <div class="card-title" data-i18n="app.cvTitle">Ton CV actuel</div>
+        <textarea id="cvInput" rows="12" data-i18n-placeholder="app.cvPlaceholder" placeholder="Colle ici le texte complet de ton CV..."></textarea>
+        <div class="input-hint" data-i18n="app.cvHint">Conseil : copie-colle le texte brut de ton CV Word ou PDF. Plus tu mets de détails, meilleur sera le résultat.</div>
+        <button class="btn-primary" onclick="goStep2()" data-i18n="app.btnStep2">Continuer → Ajouter l'offre d'emploi</button>
       </div>
     </div>
     <div id="step2" style="display:none">
       <div class="card">
-        <div class="card-title">L'offre d'emploi ciblée</div>
-        <textarea id="jobInput" rows="10" placeholder="Colle ici le texte de l'offre d'emploi..."></textarea>
-        <div class="input-hint">Plus l'offre est complète, plus le ciblage ATS sera précis.</div>
-        <button class="btn-primary" onclick="optimizeCV()">Optimiser mon CV avec l'IA →</button>
-        <button class="btn-secondary" onclick="backStep1()">← Retour</button>
+        <div class="card-title" data-i18n="app.jobTitle">L'offre d'emploi ciblée</div>
+        <textarea id="jobInput" rows="10" data-i18n-placeholder="app.jobPlaceholder" placeholder="Colle ici le texte de l'offre d'emploi..."></textarea>
+        <div class="input-hint" data-i18n="app.jobHint">Plus l'offre est complète, plus le ciblage ATS sera précis.</div>
+        <button class="btn-primary" onclick="optimizeCV()" data-i18n="app.btnOptimize">Optimiser mon CV avec l'IA →</button>
+        <button class="btn-secondary" onclick="backStep1()" data-i18n="app.btnBack">← Retour</button>
       </div>
     </div>
     <div class="loading" id="loading">
       <div class="spinner"></div>
-      <div class="loading-text" id="loadingText">Analyse de ton CV en cours...</div>
-      <div class="loading-sub" id="loadingSub">L'IA lit l'offre et identifie les mots-clés critiques</div>
+      <div class="loading-text" id="loadingText" data-i18n="app.loading1">Analyse de ton CV en cours...</div>
+      <div class="loading-sub" id="loadingSub" data-i18n="app.loading2">L'IA lit l'offre et identifie les mots-clés critiques</div>
     </div>
     <div class="results" id="results">
       <div class="card">
         <div class="score-header">
-          <div><div class="score-label">Score ATS</div><div class="score-big"><span id="scoreNum">0</span><small>/ 100</small></div></div>
-          <div style="text-align:right"><div class="score-label">Amélioration</div><div style="font-size:28px;font-weight:900;color:#2ecc9a" id="scoreImprove">+0 pts</div></div>
+          <div><div class="score-label" data-i18n="app.scoreLabel">Score ATS</div><div class="score-big"><span id="scoreNum">0</span><small>/ 100</small></div></div>
+          <div style="text-align:right"><div class="score-label" data-i18n="app.improveLabel">Amélioration</div><div style="font-size:28px;font-weight:900;color:#2ecc9a" id="scoreImprove">+0 pts</div></div>
         </div>
         <div class="score-bar-wrap"><div class="score-bar-fill" id="scoreBar"></div></div>
         <div class="criteria-grid" id="criteriaGrid"></div>
       </div>
       <div class="tabs">
-        <button class="tab active" onclick="showTab('cv')">CV optimisé</button>
-        <button class="tab" onclick="showTab('keywords')">Mots-clés ATS</button>
-        <button class="tab" onclick="showTab('tips')">Conseils</button>
-        <button class="tab" onclick="showTab('ldm')">Lettre de motivation</button>
+        <button class="tab active" onclick="showTab('cv')" data-i18n="app.tabCV">CV optimisé</button>
+        <button class="tab" onclick="showTab('keywords')" data-i18n="app.tabKw">Mots-clés ATS</button>
+        <button class="tab" onclick="showTab('tips')" data-i18n="app.tabTips">Conseils</button>
+        <button class="tab" onclick="showTab('ldm')" data-i18n="app.tabLdm">Lettre de motivation</button>
       </div>
       <div id="tab-cv">
         <div class="card" style="padding:24px">
-          <div class="section-title-sm">CV réécrit et optimisé</div>
+          <div class="section-title-sm" data-i18n="app.cvResult">CV réécrit et optimisé</div>
           <div class="cv-optimized" id="cvOptimized"></div>
-          <button class="copy-btn" id="copyBtn" onclick="copyCV()">📋 Copier le CV optimisé</button>
+          <button class="copy-btn" id="copyBtn" onclick="copyCV()" data-i18n="app.copyBtn">📋 Copier le CV optimisé</button>
         </div>
       </div>
       <div id="tab-keywords" style="display:none">
         <div class="card">
-          <div class="section-title-sm">Mots-clés ajoutés</div>
+          <div class="section-title-sm" data-i18n="app.kwAdded">Mots-clés ajoutés</div>
           <div class="keywords-wrap" id="keywordsAdded"></div>
-          <div class="section-title-sm" style="margin-top:20px">Mots-clés manquants</div>
+          <div class="section-title-sm" style="margin-top:20px" data-i18n="app.kwMissing">Mots-clés manquants</div>
           <div class="keywords-wrap" id="keywordsMissing"></div>
         </div>
       </div>
       <div id="tab-tips" style="display:none">
         <div class="card">
-          <div class="section-title-sm">Conseils prioritaires</div>
+          <div class="section-title-sm" data-i18n="app.tipsTitle">Conseils prioritaires</div>
           <div class="suggestions-list" id="suggestionsList"></div>
         </div>
       </div>
       <div id="tab-ldm" style="display:none">
         <div class="card" id="ldmCard"></div>
       </div>
-      <button class="btn-secondary" onclick="resetApp()" style="margin-top:8px">← Optimiser un autre CV</button>
+      <button class="btn-secondary" onclick="resetApp()" style="margin-top:8px" data-i18n="app.btnReset">← Optimiser un autre CV</button>
     </div>
     <div class="paywall" id="paywall">
       <div style="font-size:40px;margin-bottom:16px">🔒</div>
-      <h3>Tu as utilisé tes optimisations gratuites</h3>
-      <p>Choisis un plan pour continuer à optimiser tes candidatures.</p>
+      <h3 data-i18n="paywall.title">Tu as utilisé tes optimisations gratuites</h3>
+      <p data-i18n="paywall.sub">Choisis un plan pour continuer à optimiser tes candidatures.</p>
     </div>
   </div>
 </section>
@@ -915,6 +925,131 @@ footer{background:#0a0a0c;border-top:1px solid #1a1a1a;padding:60px 5% 40px}
 </footer>
 
 <script src="examples.js"></script>
+<script>
+/* ─── i18n ─── */
+const T={
+  fr:{
+    'nav.login':'Connexion','nav.logout':'Déconnexion','nav.pro':'Pro — 14,90€/mois',
+    'hero.badge':'Propulsé par Claude AI',
+    'hero.h1':'Le meilleur<br><span class="accent">optimiseur de CV</span><br><span class="dim">par IA</span>',
+    'hero.sub':'Tu ne fixeras plus jamais une page blanche. CVBoost analyse ton CV, cible les mots-clés ATS et réécrit chaque ligne pour décrocher l\'entretien.',
+    'hero.cta1':'Optimiser mon CV gratuitement →','hero.cta2':'Voir comment ça marche ↓',
+    'hero.proof':'<strong>+12 400 étudiants</strong> ont décroché un entretien ce mois',
+    'how.eyebrow':'Comment ça marche','how.title':'De "pas de réponse"<br>à "entretien demain"',
+    'how.sub':'Trois étapes. Trente secondes. Un CV qui déclenche des callbacks.',
+    'how.step1.h':'Colle ton CV et l\'offre d\'emploi',
+    'how.step1.p':'Copie le texte brut de ton CV et l\'offre ciblée. CVBoost lit les deux et comprend exactement ce que le recruteur cherche.',
+    'how.step2.h':'L\'IA analyse et optimise en 30 secondes',
+    'how.step2.p':'Score ATS sur 23 critères, mots-clés manquants détectés, bullet points réécrits avec des métriques, résumé pro personnalisé.',
+    'how.step3.h':'Copie ton CV optimisé et candidate',
+    'how.step3.p':'CV réécrit prêt à l\'emploi, lettre de motivation générée automatiquement. Crée une version différente pour chaque offre en quelques clics.',
+    'app.eyebrow':'Essai gratuit','app.title':'Optimise ton CV maintenant',
+    'app.sub':'1 CV + 1 lettre de motivation gratuits. Aucune carte requise.',
+    'app.cvLeft':'CV restants','app.ldmLeft':'Lettres de motivation restantes',
+    'app.step1':'Ton CV','app.step2':'L\'offre','app.step3':'Résultat',
+    'app.cvTitle':'Ton CV actuel','app.cvPlaceholder':'Colle ici le texte complet de ton CV...',
+    'app.cvHint':'Conseil : copie-colle le texte brut de ton CV Word ou PDF. Plus tu mets de détails, meilleur sera le résultat.',
+    'app.btnStep2':'Continuer → Ajouter l\'offre d\'emploi',
+    'app.jobTitle':'L\'offre d\'emploi ciblée','app.jobPlaceholder':'Colle ici le texte de l\'offre d\'emploi...',
+    'app.jobHint':'Plus l\'offre est complète, plus le ciblage ATS sera précis.',
+    'app.btnOptimize':'Optimiser mon CV avec l\'IA →','app.btnBack':'← Retour',
+    'app.loading1':'Analyse de ton CV en cours...','app.loading2':'L\'IA lit l\'offre et identifie les mots-clés critiques',
+    'app.scoreLabel':'Score ATS','app.improveLabel':'Amélioration',
+    'app.tabCV':'CV optimisé','app.tabKw':'Mots-clés ATS','app.tabTips':'Conseils','app.tabLdm':'Lettre de motivation',
+    'app.cvResult':'CV réécrit et optimisé','app.copyBtn':'📋 Copier le CV optimisé',
+    'app.kwAdded':'Mots-clés ajoutés','app.kwMissing':'Mots-clés manquants',
+    'app.tipsTitle':'Conseils prioritaires','app.btnReset':'← Optimiser un autre CV',
+    'paywall.title':'Tu as utilisé tes optimisations gratuites',
+    'paywall.sub':'Choisis un plan pour continuer à optimiser tes candidatures.'
+  },
+  en:{
+    'nav.login':'Sign in','nav.logout':'Sign out','nav.pro':'Pro — €14.90/mo',
+    'hero.badge':'Powered by Claude AI',
+    'hero.h1':'The best<br><span class="accent">AI resume optimizer</span><br><span class="dim">available</span>',
+    'hero.sub':'Never stare at a blank page again. CVBoost analyzes your resume, targets ATS keywords and rewrites every line so you land the interview.',
+    'hero.cta1':'Optimize my resume for free →','hero.cta2':'See how it works ↓',
+    'hero.proof':'<strong>+12,400 students</strong> landed an interview this month',
+    'how.eyebrow':'How it works','how.title':'From "no replies"<br>to "interview tomorrow"',
+    'how.sub':'Three steps. Thirty seconds. A resume that triggers callbacks.',
+    'how.step1.h':'Paste your resume and the job listing',
+    'how.step1.p':'Copy the plain text of your resume and the target job posting. CVBoost reads both and understands exactly what the recruiter is looking for.',
+    'how.step2.h':'AI analyzes and optimizes in 30 seconds',
+    'how.step2.p':'ATS score on 23 criteria, missing keywords detected, bullet points rewritten with metrics, personalized professional summary.',
+    'how.step3.h':'Copy your optimized resume and apply',
+    'how.step3.p':'Rewritten resume ready to use, cover letter generated automatically. Create a tailored version for each job in just a few clicks.',
+    'app.eyebrow':'Free trial','app.title':'Optimize your resume now',
+    'app.sub':'1 resume + 1 cover letter free. No credit card required.',
+    'app.cvLeft':'Resumes remaining','app.ldmLeft':'Cover letters remaining',
+    'app.step1':'Your resume','app.step2':'The job','app.step3':'Result',
+    'app.cvTitle':'Your current resume','app.cvPlaceholder':'Paste your full resume text here...',
+    'app.cvHint':'Tip: copy-paste the plain text from your Word or PDF resume. The more detail you provide, the better the result.',
+    'app.btnStep2':'Continue → Add the job listing',
+    'app.jobTitle':'The target job listing','app.jobPlaceholder':'Paste the job listing text here...',
+    'app.jobHint':'The more complete the listing, the more precise the ATS targeting.',
+    'app.btnOptimize':'Optimize my resume with AI →','app.btnBack':'← Back',
+    'app.loading1':'Analyzing your resume...','app.loading2':'AI is reading the listing and identifying critical keywords',
+    'app.scoreLabel':'ATS Score','app.improveLabel':'Improvement',
+    'app.tabCV':'Optimized resume','app.tabKw':'ATS keywords','app.tabTips':'Tips','app.tabLdm':'Cover letter',
+    'app.cvResult':'Rewritten & optimized resume','app.copyBtn':'📋 Copy optimized resume',
+    'app.kwAdded':'Added keywords','app.kwMissing':'Missing keywords',
+    'app.tipsTitle':'Priority tips','app.btnReset':'← Optimize another resume',
+    'paywall.title':'You\'ve used your free optimizations',
+    'paywall.sub':'Choose a plan to keep optimizing your applications.'
+  },
+  es:{
+    'nav.login':'Iniciar sesión','nav.logout':'Cerrar sesión','nav.pro':'Pro — 14,90€/mes',
+    'hero.badge':'Impulsado por Claude AI',
+    'hero.h1':'El mejor<br><span class="accent">optimizador de CV</span><br><span class="dim">con IA</span>',
+    'hero.sub':'Nunca más página en blanco. CVBoost analiza tu CV, detecta las palabras clave ATS y reescribe cada línea para conseguir la entrevista.',
+    'hero.cta1':'Optimizar mi CV gratis →','hero.cta2':'Ver cómo funciona ↓',
+    'hero.proof':'<strong>+12.400 estudiantes</strong> consiguieron una entrevista este mes',
+    'how.eyebrow':'Cómo funciona','how.title':'De "sin respuestas"<br>a "entrevista mañana"',
+    'how.sub':'Tres pasos. Treinta segundos. Un CV que genera callbacks.',
+    'how.step1.h':'Pega tu CV y la oferta de trabajo',
+    'how.step1.p':'Copia el texto de tu CV y la oferta objetivo. CVBoost los lee y entiende exactamente lo que busca el reclutador.',
+    'how.step2.h':'La IA analiza y optimiza en 30 segundos',
+    'how.step2.p':'Puntuación ATS en 23 criterios, palabras clave faltantes detectadas, bullet points reescritos con métricas, resumen profesional personalizado.',
+    'how.step3.h':'Copia tu CV optimizado y postula',
+    'how.step3.p':'CV reescrito listo para usar, carta de presentación generada automáticamente. Crea una versión diferente para cada oferta en pocos clics.',
+    'app.eyebrow':'Prueba gratuita','app.title':'Optimiza tu CV ahora',
+    'app.sub':'1 CV + 1 carta de presentación gratis. Sin tarjeta.',
+    'app.cvLeft':'CV restantes','app.ldmLeft':'Cartas restantes',
+    'app.step1':'Tu CV','app.step2':'La oferta','app.step3':'Resultado',
+    'app.cvTitle':'Tu CV actual','app.cvPlaceholder':'Pega aquí el texto completo de tu CV...',
+    'app.cvHint':'Consejo: copia el texto de tu CV en Word o PDF. Más detalle = mejor resultado.',
+    'app.btnStep2':'Continuar → Añadir oferta de trabajo',
+    'app.jobTitle':'La oferta de trabajo objetivo','app.jobPlaceholder':'Pega aquí el texto de la oferta...',
+    'app.jobHint':'Cuanto más completa sea la oferta, más preciso será el análisis ATS.',
+    'app.btnOptimize':'Optimizar mi CV con IA →','app.btnBack':'← Atrás',
+    'app.loading1':'Analizando tu CV...','app.loading2':'La IA lee la oferta e identifica las palabras clave críticas',
+    'app.scoreLabel':'Puntuación ATS','app.improveLabel':'Mejora',
+    'app.tabCV':'CV optimizado','app.tabKw':'Palabras clave ATS','app.tabTips':'Consejos','app.tabLdm':'Carta de presentación',
+    'app.cvResult':'CV reescrito y optimizado','app.copyBtn':'📋 Copiar CV optimizado',
+    'app.kwAdded':'Palabras clave añadidas','app.kwMissing':'Palabras clave faltantes',
+    'app.tipsTitle':'Consejos prioritarios','app.btnReset':'← Optimizar otro CV',
+    'paywall.title':'Has usado tus optimizaciones gratuitas',
+    'paywall.sub':'Elige un plan para seguir optimizando tus candidaturas.'
+  }
+};
+
+let currentLang='fr';
+
+function setLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][key])el.innerHTML=T[lang][key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key=el.getAttribute('data-i18n-placeholder');
+    if(T[lang]&&T[lang][key])el.placeholder=T[lang][key];
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang);
+  });
+}
+</script>
 <script>
 const SUPABASE_URL='https://aunoabtcgtnglrhcvaax.supabase.co';
 const SUPABASE_KEY='sb_publishable_XNyuhby2B8CYEZDnjVedIQ_G_9XnZLu';
